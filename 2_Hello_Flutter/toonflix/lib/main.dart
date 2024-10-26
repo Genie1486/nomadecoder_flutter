@@ -18,7 +18,19 @@ class App extends StatelessWidget {
     // Option1 : Material 앱을 return (구글의 디자인 시스템)
     // Option2 : cupertino 앱을 return (애플의 디자인 시스템)
     return MaterialApp(
-      home: Text("Hello World!"),
+      // 화면을 만들 때 Scaffold가 필요하다.
+      // Scaffold는 화면의 구조를 제공해준다.
+      home: Scaffold(
+        // appBar는 웹페이지의 헤더 같은 역할
+        appBar: AppBar(
+          title: Text('Hello flutter!'),
+        ),
+        // body는 웹페이지의 바디 같은 역할
+        // Center의 역할은 안에 있는 것들을 가운데에 배치시켜준다.
+        body: Center(
+          child: Text('Hello World'),
+        ),
+      ),
     );
   }
 }
