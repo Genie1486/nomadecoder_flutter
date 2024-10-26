@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 
+class Player {
+  // String? 하면 
+  // Player가 name을 가질수도, 가지지 않을 수도 있다는 의미
+  String? name;
+  Player({required this.name}) {}
+}
+
 void main() {
+  var nico = Player(name:"nico");
+  nico.name
+
   // App Widget은 우리 앱의 root(시적점) 이다.
   // 모든 화면과 버튼 등등의 모든 것들이 App Widget으로 부터 올 것이다.
   runApp(App());
