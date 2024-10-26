@@ -6,6 +6,8 @@ void main() {
   runApp(App());
 }
 
+// StatelessWidget은 기초적인 Widget으로
+// 화면에 뭔가를 띄어주는 역할만 한다.
 class App extends StatelessWidget {
   // 모든 Widget은 build 메서드를 구현해줘야 한다.
   // flutter는 build 메서드가 리턴하는 것을 화면에서 보여준다.
@@ -20,13 +22,14 @@ class App extends StatelessWidget {
     return MaterialApp(
       // 화면을 만들 때 Scaffold가 필요하다.
       // Scaffold는 화면의 구조를 제공해준다.
+      // home은 앱의 홈페이지를 의미하는듯
       home: Scaffold(
-        // appBar는 웹페이지의 헤더 같은 역할
+        // appBar는 웹페이지의 헤더 같은 역할                                        같은 역할
         appBar: AppBar(
           title: Text('Hello flutter!'),
         ),
         // body는 웹페이지의 바디 같은 역할
-        // Center의 역할은 안에 있는 것들을 가운데에 배치시켜준다.
+        // Center는 child를 가운데로 오게하는 Widget이다.
         body: Center(
           child: Text('Hello World'),
         ),
