@@ -74,6 +74,17 @@ class App extends StatelessWidget {
                     color: Colors.white.withOpacity(0.8),
                   ),
                 ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  '\$5 194 482',
+                  style: TextStyle(
+                    fontSize: 48,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+                ),
               ],
             ),
           )),
