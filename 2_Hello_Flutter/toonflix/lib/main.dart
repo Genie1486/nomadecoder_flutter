@@ -20,6 +20,10 @@ import 'package:flutter/material.dart';
 //     "source.fixAll": true
 // },
 
+// 가이드 라인을 보고 싶다면
+// setting.json에 아래 코드 입력
+// "dart.previewFlutterUiGuides": true,
+
 void main() {
   // App Widget은 우리 앱의 root(시적점) 이다.
   // 모든 화면과 버튼 등등의 모든 것들이 App Widget으로 부터 올 것이다.
