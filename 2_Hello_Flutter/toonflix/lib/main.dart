@@ -168,13 +168,14 @@ class App extends StatelessWidget {
                     color: const Color(0xFF1F2123),
                     borderRadius: BorderRadius.circular(25),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(20),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
                     child: Row(
                       children: [
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               'Euro',
                               style: TextStyle(
                                 color: Colors.white,
@@ -182,13 +183,25 @@ class App extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Row(
                               children: [
-                                Text('6 428'),
-                                Text('EUR'),
+                                const Text(
+                                  '6 428',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                                Text(
+                                  'EUR',
+                                  style: TextStyle(
+                                    color: Colors.white.withOpacity(0.8),
+                                    fontSize: 20,
+                                  ),
+                                ),
                               ],
                             ),
                           ],
