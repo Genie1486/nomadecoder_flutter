@@ -30,6 +30,9 @@ class App extends StatelessWidget {
           body: Column(
             children: [
               // SizeBox로 제일 위에 높이 80의 빈 열 생성
+              SizedBox(
+                height: 80,
+              ),
               Row(
                 children: [
                   Column(
