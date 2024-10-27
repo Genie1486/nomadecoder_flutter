@@ -24,13 +24,30 @@ class App extends StatelessWidget {
       // Scaffold는 화면의 구조를 제공해준다.
       // home은 앱의 홈페이지를 의미하는듯
       home: Scaffold(
-        // body는 웹페이지의 바디 같은 역할
-        // Center는 child를 가운데로 오게하는 Widget이다.
-        backgroundColor: Colors.black,
-        body: Center(
-          child: Text('Hello World'),
-        ),
-      ),
+          // body는 웹페이지의 바디 같은 역할
+          // Center는 child를 가운데로 오게하는 Widget이다.
+          backgroundColor: Colors.black,
+          body: Column(
+            children: [
+              // SizeBox로 제일 위에 높이 80의 빈 열 생성
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        'Hey, Selena',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      Text(
+                        'Welcome back',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  )
+                ],
+              )
+            ],
+          )),
     );
   }
 }
