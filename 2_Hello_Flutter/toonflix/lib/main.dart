@@ -1,14 +1,36 @@
 import 'package:flutter/material.dart';
 
+// constant는
+// 수정할 수 없고,
+// compile 전에 그 value를 알 수 있는 변수
+// 런타임 중이 아니라 컴파일 하는 중에 값을 산정할 수 있기에
+// constant는 최적화에 도움을 준다.
+
+// 저장할 때마다 자동으로 const를 붙여주고 싶다면
+// Step1 ~ Step3 과정을 따라 주세요
+
+// Step1 명령팔레트 열기
+// - 방법 1. 설정 -> 명령팔레트
+// - 방법 2. ctrl + shift + p
+
+// Step2 open user setting 입력
+
+// Step3 setting.json에 다음 코드 입력하기
+// "editor.codeActionsOnSave": {
+//     "source.fixAll": true
+// },
+
 void main() {
   // App Widget은 우리 앱의 root(시적점) 이다.
   // 모든 화면과 버튼 등등의 모든 것들이 App Widget으로 부터 올 것이다.
-  runApp(App());
+  runApp(const App());
 }
 
 // StatelessWidget은 기초적인 Widget으로
 // 화면에 뭔가를 띄어주는 역할만 한다.
 class App extends StatelessWidget {
+  const App({super.key});
+
   // 모든 Widget은 build 메서드를 구현해줘야 한다.
   // flutter는 build 메서드가 리턴하는 것을 화면에서 보여준다.
   // 즉, build 메서드는 Widget의 UI를 만든다.
@@ -26,14 +48,14 @@ class App extends StatelessWidget {
       home: Scaffold(
           // body는 웹페이지의 바디 같은 역할
           // Center는 child를 가운데로 오게하는 Widget이다.
-          backgroundColor: Color(0xFF181818),
+          backgroundColor: const Color(0xFF181818),
           body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // SizeBox로 제일 위에 높이 80의 빈 열 생성
-                SizedBox(
+                const SizedBox(
                   height: 80,
                 ),
                 Row(
@@ -43,7 +65,7 @@ class App extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text(
+                        const Text(
                           'Hey, Selena',
                           style: TextStyle(
                             color: Colors.white,
@@ -64,7 +86,7 @@ class App extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 120,
                 ),
                 Text(
@@ -74,10 +96,10 @@ class App extends StatelessWidget {
                     color: Colors.white.withOpacity(0.8),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
-                Text(
+                const Text(
                   '\$5 194 482',
                   style: TextStyle(
                     fontSize: 48,
@@ -85,7 +107,7 @@ class App extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Row(
@@ -99,7 +121,7 @@ class App extends StatelessWidget {
                         color: Colors.amber,
                         borderRadius: BorderRadius.circular(45),
                       ),
-                      child: Padding(
+                      child: const Padding(
                         padding: EdgeInsets.symmetric(
                           vertical: 20,
                           horizontal: 50,
