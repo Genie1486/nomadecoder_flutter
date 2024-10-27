@@ -53,6 +53,8 @@ class App extends StatelessWidget {
                         Text(
                           'Welcome back',
                           style: TextStyle(
+                            // 아래 두 코드는 같은 결과
+                            // color : Colors.fromRGBO(255,255,255,0.8);
                             color: Colors.white.withOpacity(0.5),
                             fontSize: 18,
                           ),
