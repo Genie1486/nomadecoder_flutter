@@ -34,6 +34,8 @@ class App extends StatelessWidget {
                 height: 80,
               ),
               Row(
+                // 오른쪽 정렬
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Column(
                     children: [
