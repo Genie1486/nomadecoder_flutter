@@ -41,7 +41,11 @@ class App extends StatelessWidget {
                     children: [
                       Text(
                         'Hey, Selena',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 38,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       Text(
                         'Welcome back',
