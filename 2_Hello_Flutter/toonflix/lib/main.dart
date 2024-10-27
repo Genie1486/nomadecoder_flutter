@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/widgets/Button.dart';
 
 // constant는
 // 수정할 수 없고,
@@ -116,49 +117,22 @@ class App extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Container는 일종의 div
                     // Container를
                     // background color, border radius 등의 옵션들로
                     // 꾸며줄 수 있다.
-                    Container(
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF1B33B),
-                        borderRadius: BorderRadius.circular(45),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 20,
-                          horizontal: 50,
-                        ),
-                        child: Text(
-                          'Transfer',
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
+                    Button(
+                      text: 'Transfer',
+                      bgColor: Color(0xFFF1B33B),
+                      textColor: Colors.black,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF1F2123),
-                        borderRadius: BorderRadius.circular(45),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 20,
-                          horizontal: 50,
-                        ),
-                        child: Text(
-                          'Request',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
+                    Button(
+                      text: 'Request',
+                      bgColor: Color(0xFF1F2123),
+                      textColor: Colors.white,
                     ),
                   ],
                 )
