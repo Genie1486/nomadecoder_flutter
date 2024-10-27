@@ -26,6 +26,7 @@ class App extends StatelessWidget {
       home: Scaffold(
         // body는 웹페이지의 바디 같은 역할
         // Center는 child를 가운데로 오게하는 Widget이다.
+        backgroundColor: Colors.black,
         body: Center(
           child: Text('Hello World'),
         ),
