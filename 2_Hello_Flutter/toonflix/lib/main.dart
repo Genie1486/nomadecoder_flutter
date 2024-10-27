@@ -27,39 +27,42 @@ class App extends StatelessWidget {
           // body는 웹페이지의 바디 같은 역할
           // Center는 child를 가운데로 오게하는 Widget이다.
           backgroundColor: Color(0xFF181818),
-          body: Column(
-            children: [
-              // SizeBox로 제일 위에 높이 80의 빈 열 생성
-              SizedBox(
-                height: 80,
-              ),
-              Row(
-                // 오른쪽 정렬
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Hey, Selena',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 28,
-                          fontWeight: FontWeight.w800,
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 40),
+            child: Column(
+              children: [
+                // SizeBox로 제일 위에 높이 80의 빈 열 생성
+                SizedBox(
+                  height: 80,
+                ),
+                Row(
+                  // 오른쪽 정렬
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Hey, Selena',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 28,
+                            fontWeight: FontWeight.w800,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Welcome back',
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.5),
-                          fontSize: 18,
+                        Text(
+                          'Welcome back',
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.5),
+                            fontSize: 18,
+                          ),
                         ),
-                      ),
-                    ],
-                  )
-                ],
-              )
-            ],
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
           )),
     );
   }
