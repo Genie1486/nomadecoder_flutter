@@ -30,6 +30,7 @@ class App extends StatelessWidget {
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 40),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // SizeBox로 제일 위에 높이 80의 빈 열 생성
                 SizedBox(
@@ -62,7 +63,17 @@ class App extends StatelessWidget {
                       ],
                     )
                   ],
-                )
+                ),
+                SizedBox(
+                  height: 120,
+                ),
+                Text(
+                  'Total balance',
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: Colors.white.withOpacity(0.8),
+                  ),
+                ),
               ],
             ),
           )),
