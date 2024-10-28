@@ -216,6 +216,9 @@ class App extends StatelessWidget {
                             ),
                           ],
                         ),
+                        // Transform.scale
+                        // 부모에 영향을 끼치지 않고
+                        // 자식 요소의 크기를 바꿀 수 있다.
                         Transform.scale(
                           scale: 2.2,
                           child: Transform.translate(
