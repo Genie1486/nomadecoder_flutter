@@ -63,7 +63,7 @@ class App extends StatelessWidget {
               children: [
                 // SizeBox로 제일 위에 높이 80의 빈 열 생성
                 const SizedBox(
-                  height: 80,
+                  height: 30,
                 ),
                 Row(
                   // 오른쪽 정렬
@@ -94,7 +94,7 @@ class App extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 120,
+                  height: 50,
                 ),
                 Text(
                   'Total balance',
@@ -137,7 +137,7 @@ class App extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 100,
+                  height: 30,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -169,8 +169,9 @@ class App extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(30),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,6 +209,11 @@ class App extends StatelessWidget {
                               ],
                             ),
                           ],
+                        ),
+                        const Icon(
+                          Icons.euro_rounded,
+                          color: Colors.white,
+                          size: 98,
                         ),
                       ],
                     ),
