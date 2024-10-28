@@ -164,6 +164,12 @@ class App extends StatelessWidget {
                   height: 20,
                 ),
                 Container(
+                  // clipBehavior는
+                  // Container의 어떤 아이템이
+                  // overflow가 되었을 때
+                  // 어떻게 처리할 것인지 설정하는 속성
+                  // Clip.hardEdge -> overflow 된 부분 사라지게함
+                  clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
                     color: const Color(0xFF1F2123),
                     borderRadius: BorderRadius.circular(25),
@@ -215,7 +221,7 @@ class App extends StatelessWidget {
                           child: Transform.translate(
                             // Transform.translate로 child를
                             // 오른쪽으로 8, 왼쪽으로 15만큼 이동
-                            offset: const Offset(8, 15),
+                            offset: const Offset(-5, 12),
                             child: const Icon(
                               Icons.euro_rounded,
                               color: Colors.white,
