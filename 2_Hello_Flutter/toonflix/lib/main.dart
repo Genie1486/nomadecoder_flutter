@@ -212,10 +212,15 @@ class App extends StatelessWidget {
                         ),
                         Transform.scale(
                           scale: 2.2,
-                          child: const Icon(
-                            Icons.euro_rounded,
-                            color: Colors.white,
-                            size: 88,
+                          child: Transform.translate(
+                            // Transform.translate로 child를
+                            // 오른쪽으로 8, 왼쪽으로 15만큼 이동
+                            offset: const Offset(8, 15),
+                            child: const Icon(
+                              Icons.euro_rounded,
+                              color: Colors.white,
+                              size: 88,
+                            ),
                           ),
                         ),
                       ],
