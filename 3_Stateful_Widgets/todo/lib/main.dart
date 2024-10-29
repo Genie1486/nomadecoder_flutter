@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todo/widgets/metting_card.dart';
 
+import 'widgets/select_day.dart';
+
 void main() {
   runApp(const App());
 }
@@ -48,40 +50,7 @@ class _AppState extends State<App> {
                 const SizedBox(
                   height: 10,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 12),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'MONDAY 16',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Text(
-                                  'TODAY 17 18 19 20 21 22 23 24 25 26 27 28 29 30',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 40,
-                                    fontWeight: FontWeight.w400,
-                                  )),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
+                const SelectDay(),
                 const SizedBox(
                   height: 10,
                 ),
