@@ -126,7 +126,7 @@ class _MettingCardState extends State<MettingCard>
                     padding: const EdgeInsets.only(right: 30),
                     child: Text(person,
                         style: TextStyle(
-                            color: person == 'Me'
+                            color: person == 'ME'
                                 ? darkenColor(widget.bgColor, 0.8)
                                 : darkenColor(widget.bgColor, 0.3))),
                   ),
