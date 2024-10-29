@@ -25,7 +25,7 @@ class _AppState extends State<App> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,7 +46,7 @@ class _AppState extends State<App> {
                   ],
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 12),
@@ -83,7 +83,7 @@ class _AppState extends State<App> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 const MettingCard(
                   bgColor: Color.fromARGB(255, 254, 248, 84),
@@ -120,11 +120,4 @@ class _AppState extends State<App> {
       ),
     );
   }
-}
-
-Color darkenColor(Color color, double amount) {
-  int r = (color.red * (1 - amount)).round();
-  int g = (color.green * (1 - amount)).round();
-  int b = (color.blue * (1 - amount)).round();
-  return Color.fromARGB(color.alpha, r, g, b);
 }

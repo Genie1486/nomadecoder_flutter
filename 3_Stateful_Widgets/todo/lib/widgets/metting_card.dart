@@ -48,7 +48,7 @@ class _MettingCardState extends State<MettingCard>
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 5),
+      margin: const EdgeInsets.only(top: 6),
       decoration: BoxDecoration(
         color: widget.bgColor,
         borderRadius: BorderRadius.circular(40),
