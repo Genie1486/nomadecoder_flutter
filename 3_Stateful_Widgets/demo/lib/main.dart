@@ -25,14 +25,11 @@ class App extends StatefulWidget {
 // 우리의 UI는 새로고침 되면서 최신 데이터를 보여준다.
 // Stateful Widget의 데이터는 simple dart 클래스 프로퍼티이다.
 class _AppState extends State<App> {
-  int counter = 0;
+  List<int> numbers = [];
 
   void onClicked() {
-    // setState는
-    // 위젯에게 데이터가 변경되었다고 알려주는 함수
-    // Flutter는 새로운 데이터와 함께 build 메서드를 다시 실행함
     setState(() {
-      counter = counter + 1;
+      numbers.add(numbers.length);
     });
   }
 
@@ -49,10 +46,7 @@ class _AppState extends State<App> {
                 'Click Count',
                 style: TextStyle(fontSize: 30),
               ),
-              Text(
-                '$counter',
-                style: const TextStyle(fontSize: 30),
-              ),
+              for (var n in numbers) Text('$n'),
               IconButton(
                 iconSize: 40,
                 onPressed: onClicked,
