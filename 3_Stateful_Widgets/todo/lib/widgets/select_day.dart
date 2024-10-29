@@ -14,6 +14,7 @@ class _SelectDayState extends State<SelectDay>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late int currentDay = 1;
+  late ScrollController _scrollController; // 스크롤 컨트롤러 추가
 
   void changeDay(int i) {
     setState(() {
@@ -26,11 +27,20 @@ class _SelectDayState extends State<SelectDay>
     currentDay = widget.today;
     super.initState();
     _controller = AnimationController(vsync: this);
+    _scrollController = ScrollController(); // 스크롤 컨트롤러 초기화
+
+    // TODAY 버튼 위치로 스크롤 조정
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // TODAY 버튼의 인덱스 계산
+      int todayIndex = widget.today - 1; // 0-based index
+      _scrollController.jumpTo(todayIndex * 84); // 스크롤 위치 조정 (버튼 간격에 따라 조정 필요)
+    });
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _scrollController.dispose(); // 스크롤 컨트롤러 해제
     super.dispose();
   }
 
@@ -55,6 +65,7 @@ class _SelectDayState extends State<SelectDay>
             children: [
               Expanded(
                 child: SingleChildScrollView(
+                  controller: _scrollController, // 스크롤 컨트롤러 설정,
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
