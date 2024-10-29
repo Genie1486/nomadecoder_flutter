@@ -25,6 +25,14 @@ class App extends StatefulWidget {
 // 우리의 UI는 새로고침 되면서 최신 데이터를 보여준다.
 // Stateful Widget의 데이터는 simple dart 클래스 프로퍼티이다.
 class _AppState extends State<App> {
+  bool showTitle = true;
+
+  void toggleTitle() {
+    setState(() {
+      showTitle = !showTitle;
+    });
+  }
+
   List<int> numbers = [];
 
   void onClicked() {
@@ -43,13 +51,17 @@ class _AppState extends State<App> {
           ),
         ),
       ),
-      home: const Scaffold(
-        backgroundColor: Color(0xFFF4EDDB),
+      home: Scaffold(
+        backgroundColor: const Color(0xFFF4EDDB),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              MyLargeTitle(),
+              showTitle ? const MyLargeTitle() : const Text('nothing'),
+              IconButton(
+                onPressed: toggleTitle,
+                icon: const Icon(Icons.remove_red_eye),
+              )
             ],
           ),
         ),
@@ -75,6 +87,16 @@ class _MyLargeTitleState extends State<MyLargeTitle> {
     // initState()는 build() 메서드 실행전에 한 번만 실행된다.
     super.initState();
     print('initState');
+  }
+
+  // dispose() 메서드는
+  // 위젯이 스크린에서 제거될 때 호출되는 메서드
+  // 무언가를 취소하고 싶을 때 사용
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    print("dispose!");
   }
 
   // 부모 요소에 접근하기를 원한다.
