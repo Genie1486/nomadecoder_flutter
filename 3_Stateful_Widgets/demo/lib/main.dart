@@ -80,11 +80,17 @@ class MyLargeTitle extends StatefulWidget {
 }
 
 class _MyLargeTitleState extends State<MyLargeTitle> {
+  // initState는 build 이전에 호출되는 메서드
+  // build는 위젯에서 UI를 만들고
+  // dispose는 위젯이 위젯트리에서 제거될 때 호출되는 메서드
+
   int count = 0;
 
   @override
   void initState() {
     // initState()는 build() 메서드 실행전에 한 번만 실행된다.
+    // initState에서 변수를 초기화하고
+    // API 업데이트를 구독할 수 있게 한다.
     super.initState();
     print('initState');
   }
@@ -92,6 +98,7 @@ class _MyLargeTitleState extends State<MyLargeTitle> {
   // dispose() 메서드는
   // 위젯이 스크린에서 제거될 때 호출되는 메서드
   // 무언가를 취소하고 싶을 때 사용
+  // 이벤트 리스너 같은 것들을 구독취소 해준다.
   @override
   void dispose() {
     // TODO: implement dispose
