@@ -13,7 +13,7 @@ class SelectDay extends StatefulWidget {
 class _SelectDayState extends State<SelectDay>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  int currentDay = 1;
+  late int currentDay = 1;
 
   void changeDay(int i) {
     setState(() {
@@ -23,6 +23,7 @@ class _SelectDayState extends State<SelectDay>
 
   @override
   void initState() {
+    currentDay = widget.today;
     super.initState();
     _controller = AnimationController(vsync: this);
   }
