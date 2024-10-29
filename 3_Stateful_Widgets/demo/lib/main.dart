@@ -7,6 +7,10 @@ void main() {
 // st 라고 입력하면
 // Stateful, Stateless 위젯을 자동완성할 수 있다.
 
+// Stateful Widget은 두 가지 부분으로 구성되어 있다.
+// Part1 : Widget
+// Part2 : State (데이터와 UI)
+
 // Part1 : Widget 그 자체
 class App extends StatefulWidget {
   const App({super.key});
@@ -23,7 +27,9 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   int counter = 0;
 
-  void onClicked() {}
+  void onClicked() {
+    counter = counter + 1;
+  }
 
   @override
   Widget build(BuildContext context) {
