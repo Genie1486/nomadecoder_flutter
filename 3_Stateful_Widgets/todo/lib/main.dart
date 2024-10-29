@@ -90,215 +90,100 @@ class _AppState extends State<App> {
                     color: const Color.fromARGB(255, 254, 248, 84),
                     borderRadius: BorderRadius.circular(40),
                   ),
-                  height: 150,
+                  height: 160,
                   child: Column(
                     children: [
-                      const Row(
-                        children: [
-                          Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Text('11'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text('30'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text('|'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text('12'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text('20'),
-                                ],
-                              )
-                            ],
-                          ),
-                          Column(children: [
-                            Text(
-                              'DESIGN',
-                              style: TextStyle(
-                                fontSize: 50,
-                                fontWeight: FontWeight.w600,
-                                height: 1,
-                              ),
-                            ),
-                            Text(
-                              'METTING',
-                              style: TextStyle(
-                                fontSize: 50,
-                                fontWeight: FontWeight.w600,
-                                height: 1,
-                              ),
-                            ),
-                          ]),
-                        ],
+                      const SizedBox(
+                        height: 20,
                       ),
                       Row(
                         children: [
-                          Text(
-                            'ALEX HELENA NANA',
-                            style: TextStyle(
-                              color: darkenColor(const Color(0xFFFFE754), 0.3),
+                          const SizedBox(
+                            width: 50,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text('11',
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      height: 1,
+                                    )),
+                                Text('30'),
+                                Text('|',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      height: 0.8,
+                                    )),
+                                Text('12',
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      height: 1,
+                                    )),
+                                Text('20'),
+                              ],
                             ),
+                          ),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          Transform.translate(
+                            offset: const Offset(0, -12),
+                            child: const Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'DESIGN',
+                                    style: TextStyle(
+                                      fontSize: 50,
+                                      fontWeight: FontWeight.w600,
+                                      height: 0.9,
+                                    ),
+                                  ),
+                                  Text(
+                                    'METTING',
+                                    style: TextStyle(
+                                      fontSize: 50,
+                                      fontWeight: FontWeight.w600,
+                                      height: 0.9,
+                                    ),
+                                  ),
+                                ]),
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 5),
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 254, 248, 84),
-                    borderRadius: BorderRadius.circular(40),
-                  ),
-                  height: 150,
-                  child: Column(
-                    children: [
-                      const Row(
-                        children: [
-                          Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Text('11'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text('30'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text('|'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text('12'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text('20'),
-                                ],
-                              )
-                            ],
-                          ),
-                          Column(children: [
-                            Text(
-                              'DESIGN',
-                              style: TextStyle(
-                                fontSize: 50,
-                                fontWeight: FontWeight.w600,
-                                height: 1,
-                              ),
-                            ),
-                            Text(
-                              'METTING',
-                              style: TextStyle(
-                                fontSize: 50,
-                                fontWeight: FontWeight.w600,
-                                height: 1,
-                              ),
-                            ),
-                          ]),
-                        ],
+                      const SizedBox(
+                        height: 1,
                       ),
-                      Row(
-                        children: [
-                          Text(
-                            'ALEX HELENA NANA',
-                            style: TextStyle(
-                              color: darkenColor(const Color(0xFFFFE754), 0.3),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 55),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 30),
+                              child: Text('ALEX',
+                                  style: TextStyle(
+                                    color: darkenColor(
+                                        const Color(0xFFFFE754), 0.3),
+                                  )),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 5),
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 254, 248, 84),
-                    borderRadius: BorderRadius.circular(40),
-                  ),
-                  height: 150,
-                  child: Column(
-                    children: [
-                      const Row(
-                        children: [
-                          Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Text('11'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text('30'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text('|'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text('12'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text('20'),
-                                ],
-                              )
-                            ],
-                          ),
-                          Column(children: [
-                            Text(
-                              'DESIGN',
-                              style: TextStyle(
-                                fontSize: 50,
-                                fontWeight: FontWeight.w600,
-                                height: 1,
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 30),
+                              child: Text('ALEX',
+                                  style: TextStyle(
+                                    color: darkenColor(
+                                        const Color(0xFFFFE754), 0.3),
+                                  )),
                             ),
-                            Text(
-                              'METTING',
-                              style: TextStyle(
-                                fontSize: 50,
-                                fontWeight: FontWeight.w600,
-                                height: 1,
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 30),
+                              child: Text('ALEX',
+                                  style: TextStyle(
+                                    color: darkenColor(
+                                        const Color(0xFFFFE754), 0.3),
+                                  )),
                             ),
-                          ]),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'ALEX HELENA NANA',
-                            style: TextStyle(
-                              color: darkenColor(const Color(0xFFFFE754), 0.3),
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),
