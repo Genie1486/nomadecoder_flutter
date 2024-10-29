@@ -10,8 +10,12 @@ class DateCalculator {
   ];
 
   getDay() {
-    DateTime now = DateTime.now();
-    return now.day;
+    // 현재 UTC 시간
+    DateTime nowUtc = DateTime.now().toUtc();
+
+    // 한국 표준시(KST)로 변환
+    DateTime nowKst = nowUtc.add(const Duration(hours: 9));
+    return nowKst.day;
   }
 
   getWeekDay(int year, int month, int day) {
