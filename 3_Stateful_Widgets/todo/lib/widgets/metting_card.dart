@@ -53,7 +53,7 @@ class _MettingCardState extends State<MettingCard>
         color: widget.bgColor,
         borderRadius: BorderRadius.circular(40),
       ),
-      height: 160,
+      height: 158,
       child: Column(
         children: [
           const SizedBox(
