@@ -58,22 +58,29 @@ class _AppState extends State<App> {
   }
 }
 
-class MyLargeTitle extends StatelessWidget {
+class MyLargeTitle extends StatefulWidget {
   const MyLargeTitle({
     super.key,
   });
 
+  @override
+  State<MyLargeTitle> createState() => _MyLargeTitleState();
+}
+
+class _MyLargeTitleState extends State<MyLargeTitle> {
+  int count = 0;
+
+  @override
+  void initState() {
+    // initState()는 build() 메서드 실행전에 한 번만 실행된다.
+    super.initState();
+    print('initState');
+  }
+
   // 부모 요소에 접근하기를 원한다.
-  // 이거를 하기 위해서 BuildContext를 이용
-
-  // BuildContext는
-  // 위젯트리에서 위젯의 위치를 제공하고
-  // 이를 통해서 상위요소의 데이터에 접근할 수 있다.
-
-  // context는 Text 이전에 있는 모든 상위 요소들에 대한 정보
-  // context는 MyLargeTitle Text의 부모 요소들의 모든 정보를 담고 있다.
   @override
   Widget build(BuildContext context) {
+    print('print');
     return Text(
       'My Large Title',
       style: TextStyle(
