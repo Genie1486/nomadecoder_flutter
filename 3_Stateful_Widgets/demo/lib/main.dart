@@ -28,7 +28,12 @@ class _AppState extends State<App> {
   int counter = 0;
 
   void onClicked() {
-    counter = counter + 1;
+    // setState는
+    // 위젯에게 데이터가 변경되었다고 알려주는 함수
+    // Flutter는 새로운 데이터와 함께 build 메서드를 다시 실행함
+    setState(() {
+      counter = counter + 1;
+    });
   }
 
   @override
