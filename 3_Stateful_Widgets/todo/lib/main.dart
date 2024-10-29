@@ -50,7 +50,7 @@ class _AppState extends State<App> {
                 const SizedBox(
                   height: 10,
                 ),
-                const SelectDay(),
+                SelectDay(),
                 const SizedBox(
                   height: 10,
                 ),
