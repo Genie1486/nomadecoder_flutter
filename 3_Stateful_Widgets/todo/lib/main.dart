@@ -81,9 +81,238 @@ class _AppState extends State<App> {
                     ],
                   ),
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 5),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 254, 248, 84),
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  height: 150,
+                  child: Column(
+                    children: [
+                      const Row(
+                        children: [
+                          Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text('11'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('30'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('|'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('12'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('20'),
+                                ],
+                              )
+                            ],
+                          ),
+                          Column(children: [
+                            Text(
+                              'DESIGN',
+                              style: TextStyle(
+                                fontSize: 50,
+                                fontWeight: FontWeight.w600,
+                                height: 1,
+                              ),
+                            ),
+                            Text(
+                              'METTING',
+                              style: TextStyle(
+                                fontSize: 50,
+                                fontWeight: FontWeight.w600,
+                                height: 1,
+                              ),
+                            ),
+                          ]),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'ALEX HELENA NANA',
+                            style: TextStyle(
+                              color: darkenColor(const Color(0xFFFFE754), 0.3),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 5),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 254, 248, 84),
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  height: 150,
+                  child: Column(
+                    children: [
+                      const Row(
+                        children: [
+                          Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text('11'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('30'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('|'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('12'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('20'),
+                                ],
+                              )
+                            ],
+                          ),
+                          Column(children: [
+                            Text(
+                              'DESIGN',
+                              style: TextStyle(
+                                fontSize: 50,
+                                fontWeight: FontWeight.w600,
+                                height: 1,
+                              ),
+                            ),
+                            Text(
+                              'METTING',
+                              style: TextStyle(
+                                fontSize: 50,
+                                fontWeight: FontWeight.w600,
+                                height: 1,
+                              ),
+                            ),
+                          ]),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'ALEX HELENA NANA',
+                            style: TextStyle(
+                              color: darkenColor(const Color(0xFFFFE754), 0.3),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 5),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 254, 248, 84),
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  height: 150,
+                  child: Column(
+                    children: [
+                      const Row(
+                        children: [
+                          Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text('11'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('30'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('|'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('12'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('20'),
+                                ],
+                              )
+                            ],
+                          ),
+                          Column(children: [
+                            Text(
+                              'DESIGN',
+                              style: TextStyle(
+                                fontSize: 50,
+                                fontWeight: FontWeight.w600,
+                                height: 1,
+                              ),
+                            ),
+                            Text(
+                              'METTING',
+                              style: TextStyle(
+                                fontSize: 50,
+                                fontWeight: FontWeight.w600,
+                                height: 1,
+                              ),
+                            ),
+                          ]),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'ALEX HELENA NANA',
+                            style: TextStyle(
+                              color: darkenColor(const Color(0xFFFFE754), 0.3),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ],
             )),
       ),
     );
   }
+}
+
+Color darkenColor(Color color, double amount) {
+  int r = (color.red * (1 - amount)).round();
+  int g = (color.green * (1 - amount)).round();
+  int b = (color.blue * (1 - amount)).round();
+  return Color.fromARGB(color.alpha, r, g, b);
 }
