@@ -26,14 +26,18 @@ class _HomeScreenState extends State<HomeScreen> {
             // 비율을 정할 수 있다.
             flex: 1,
             child: Container(
+                // alignment: Alignment.bottomCenter
+                // Container가 차지하는 영역의
+                // 아래쪽 가운데에 child Widget을 위치
+                alignment: Alignment.bottomCenter,
                 child: Text(
-              '25:00',
-              style: TextStyle(
-                color: Theme.of(context).cardColor,
-                fontSize: 89,
-                fontWeight: FontWeight.w600,
-              ),
-            )),
+                  '25:00',
+                  style: TextStyle(
+                    color: Theme.of(context).cardColor,
+                    fontSize: 89,
+                    fontWeight: FontWeight.w600,
+                  ),
+                )),
           ),
           Flexible(
             flex: 2,
