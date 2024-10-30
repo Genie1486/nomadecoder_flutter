@@ -10,7 +10,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int totalSeconds = 1500; // 25분을 초로 환산
+  static const twentyFiveMinutes = 1500;
+  int totalSeconds = twentyFiveMinutes; // 25분을 초로 환산
   bool isRunning = false;
   int totalPomodoros = 0;
 
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         totalPomodoros = totalPomodoros + 1;
         isRunning = false;
-        totalSeconds = 1500;
+        totalSeconds = twentyFiveMinutes;
       });
       timer.cancel();
     } else {
