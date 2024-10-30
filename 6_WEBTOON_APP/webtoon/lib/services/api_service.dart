@@ -4,8 +4,17 @@ class ApiService {
   final String baseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
   final String today = "today";
 
-  void getTodaysToons() {
+  // 우리가 getTodaysToons라는 함수를 실행할 때
+  // Dart가 바로 코드를 처리하지 않고
+  // API 요청이 처리돼서 응답을 반환할 때까지 기다리게 하고 싶다.
+  // 이것을 async(비동기) programming이라고 한다.
+  void getTodaysToons() async {
     final url = Uri.parse('$baseUrl/$today');
-    http.get(url);
+    // Dart가 결과를 기다리게 하고 싶을 때 await 키워드를 사용
+    // await 키워드는 async 함수에서만 사용가능
+
+    // Future<타입>은 현재가 아닌 미래에 받을 결과 값의 타입을 알려준다.
+    // 따라서 http.get() 메서드는 Response 타입을 반환함을 알 수 있다.
+    final response = await http.get(url);
   }
 }
