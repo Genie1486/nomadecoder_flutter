@@ -11,6 +11,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // ignore: deprecated_member_use
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [
           // Flexible :
