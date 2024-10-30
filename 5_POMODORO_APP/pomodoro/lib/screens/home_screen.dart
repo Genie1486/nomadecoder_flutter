@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int totalSeconds = 1500; // 25분을 초로 환산
   bool isRunning = false;
+  int totalPomodoros = 0;
 
   // Timer를 통해 정해진 간격에 한번씩 함수를 실행할 수 있다.
   // late modifier를 써서 나중에 초기화한다고 약속함
@@ -21,12 +22,21 @@ class _HomeScreenState extends State<HomeScreen> {
   // 1초 마다 totalSeconds에서 1을 빼고
   // UI를 업데이트 하는 역할을 한다.
   void onTick(Timer timer) {
-    // setState는 상태가 변경되었음을 Flutter에게 알리는 메서드
-    // 이 메서드를 호출하면 Flutter는 해당 위젯과 그 자식 위젯들을 다시 그려야 한다고 판단하고
-    // UI를 업데이트 합니다.
-    setState(() {
-      totalSeconds = totalSeconds - 1;
-    });
+    if (totalSeconds == 0) {
+      setState(() {
+        totalPomodoros = totalPomodoros + 1;
+        isRunning = false;
+        totalSeconds = 1500;
+      });
+      timer.cancel();
+    } else {
+      // setState는 상태가 변경되었음을 Flutter에게 알리는 메서드
+      // 이 메서드를 호출하면 Flutter는 해당 위젯과 그 자식 위젯들을 다시 그려야 한다고 판단하고
+      // UI를 업데이트 합니다.
+      setState(() {
+        totalSeconds = totalSeconds - 1;
+      });
+    }
   }
 
   void onStartPressed() {
@@ -116,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Text(
-                          '0',
+                          '$totalPomodoros',
                           style: TextStyle(
                             fontSize: 58,
                             color:
