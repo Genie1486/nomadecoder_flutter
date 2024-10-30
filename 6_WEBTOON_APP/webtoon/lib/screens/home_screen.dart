@@ -12,9 +12,10 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.white, // AppBar의 배경색
         foregroundColor: Colors.green, // AppBar의 글자색 설정
         title: const Text(
-          "Today's 툰s",
+          "오늘의 웹툰",
           style: TextStyle(
-            fontSize: 26,
+            fontSize: 24,
+            fontWeight: FontWeight.w400,
           ),
         ),
       ),
