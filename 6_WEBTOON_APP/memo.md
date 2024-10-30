@@ -16,3 +16,12 @@ https://webtoon-crawler.nomadcoders.workers.dev/
 - '/:id' : Returns a comic's information by ':id'
 - '/:id/episodes' : Returns the latest episodes for a comic by ':id'
 ```
+
+# 플러터 패키지 설치방법
+
+```
+- 플러터 패키지 저장소 : https://pub.dev/
+- 원하는 패키지 찾아서
+    M1 : pubspec.yaml의 dependency에 추가
+    M2 : 터미널에 `flutter pub add 패키지명` 명령어 입력
+```
