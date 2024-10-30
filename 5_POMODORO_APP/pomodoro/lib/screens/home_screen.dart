@@ -11,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int totalSeconds = 1500; // 25분을 초로 환산
+  bool isRunning = false;
 
   // Timer를 통해 정해진 간격에 한번씩 함수를 실행할 수 있다.
   // late modifier를 써서 나중에 초기화한다고 약속함
@@ -36,6 +37,10 @@ class _HomeScreenState extends State<HomeScreen> {
       const Duration(seconds: 1),
       onTick,
     );
+
+    setState(() {
+      isRunning = true;
+    });
   }
 
   @override
@@ -76,7 +81,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 iconSize: 120,
                 color: Theme.of(context).cardColor,
                 onPressed: onStartPressed,
-                icon: const Icon(Icons.play_circle_fill_outlined),
+                icon: Icon(isRunning
+                    ? Icons.pause_circle_outline
+                    : Icons.play_circle_fill_outlined),
               ),
             ),
           ),
