@@ -18,6 +18,11 @@ class _HomeScreenState extends State<HomeScreen> {
           // - 하드 코딩하지 않고
           // - UI를 비율에 기반해서 더 유연하게 만들 수 있게 해줌
           Flexible(
+            // Flexible Widget에서
+            // flex 값을 통해
+            // 하나의 박스가 얼마나 공간을 차지하 지
+            // 비율을 정할 수 있다.
+            flex: 1,
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.red,
@@ -25,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Flexible(
+            flex: 2,
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.green,
@@ -32,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Flexible(
+            flex: 1,
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.blue,
