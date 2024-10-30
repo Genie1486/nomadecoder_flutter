@@ -25,7 +25,15 @@ class _HomeScreenState extends State<HomeScreen> {
             // 하나의 박스가 얼마나 공간을 차지하 지
             // 비율을 정할 수 있다.
             flex: 1,
-            child: Container(),
+            child: Container(
+                child: Text(
+              '25:00',
+              style: TextStyle(
+                color: Theme.of(context).cardColor,
+                fontSize: 89,
+                fontWeight: FontWeight.w600,
+              ),
+            )),
           ),
           Flexible(
             flex: 2,
