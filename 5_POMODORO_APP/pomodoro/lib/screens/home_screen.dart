@@ -60,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Theme.of(context).colorScheme.surface,
                     ),
                     child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text('Pomodors'),
                         Text('0'),
