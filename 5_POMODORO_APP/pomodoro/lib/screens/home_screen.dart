@@ -43,6 +43,13 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void onPausePressed() {
+    timer.cancel();
+    setState(() {
+      isRunning = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: IconButton(
                 iconSize: 120,
                 color: Theme.of(context).cardColor,
-                onPressed: onStartPressed,
+                onPressed: isRunning ? onPausePressed : onStartPressed,
                 icon: Icon(isRunning
                     ? Icons.pause_circle_outline
                     : Icons.play_circle_fill_outlined),
