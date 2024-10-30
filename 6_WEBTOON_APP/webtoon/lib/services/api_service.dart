@@ -11,7 +11,8 @@ class ApiService {
   // Dart가 바로 코드를 처리하지 않고
   // API 요청이 처리돼서 응답을 반환할 때까지 기다리게 하고 싶다.
   // 이것을 async(비동기) programming이라고 한다.
-  void getTodaysToons() async {
+  Future<List<WebtoonModel>> getTodaysToons() async {
+    List<WebtoonModel> webtoonInstances = [];
     final url = Uri.parse('$baseUrl/$today');
     // Dart가 결과를 기다리게 하고 싶을 때 await 키워드를 사용
     // await 키워드는 async 함수에서만 사용가능
@@ -26,10 +27,11 @@ class ApiService {
       final List<dynamic> webtoons = jsonDecode(response.body);
 
       for (var webtoon in webtoons) {
-        WebtoonModel.fromJson(webtoon);
+        // final toon = WebtoonModel.fromJson(webtoon);
+        webtoonInstances.add(WebtoonModel.fromJson(webtoon));
       }
 
-      return;
+      return webtoonInstances;
     }
     throw Error();
   }
