@@ -16,5 +16,11 @@ class ApiService {
     // Future<타입>은 현재가 아닌 미래에 받을 결과 값의 타입을 알려준다.
     // 따라서 http.get() 메서드는 Response 타입을 반환함을 알 수 있다.
     final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      print(response.body);
+      return;
+    }
+    throw Error();
   }
 }
