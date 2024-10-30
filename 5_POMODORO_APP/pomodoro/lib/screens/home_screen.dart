@@ -23,27 +23,15 @@ class _HomeScreenState extends State<HomeScreen> {
             // 하나의 박스가 얼마나 공간을 차지하 지
             // 비율을 정할 수 있다.
             flex: 1,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.red,
-              ),
-            ),
+            child: Container(),
           ),
           Flexible(
             flex: 2,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.green,
-              ),
-            ),
+            child: Container(),
           ),
           Flexible(
             flex: 1,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
+            child: Container(),
           ),
         ],
       ),
