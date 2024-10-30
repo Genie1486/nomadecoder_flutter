@@ -7,6 +7,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Scaffold는 screen을 위한 기본적인 레이아웃과 설정을 제공
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 2, // 밑에 그림자
         backgroundColor: Colors.white, // AppBar의 배경색
