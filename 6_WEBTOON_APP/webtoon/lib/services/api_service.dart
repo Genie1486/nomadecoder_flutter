@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+import 'package:webtoon/models/webtoon_model.dart';
 
 class ApiService {
   final String baseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
@@ -18,7 +21,14 @@ class ApiService {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      print(response.body);
+      // jsonDecode는 String을 JSON으로 바꿔주는 함수
+      // response.body는 String 이다.
+      final List<dynamic> webtoons = jsonDecode(response.body);
+
+      for (var webtoon in webtoons) {
+        WebtoonModel.fromJson(webtoon);
+      }
+
       return;
     }
     throw Error();
