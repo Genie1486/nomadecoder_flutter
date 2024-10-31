@@ -115,24 +115,42 @@ class _HomeScreenState extends State<HomeScreen> {
             Flexible(
               flex: 1,
               child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      iconSize: 80,
-                      color: Theme.of(context).cardColor,
-                      onPressed: isRunning ? onPausePressed : onStartPressed,
-                      icon: Icon(isRunning
-                          ? Icons.pause_circle_outline
-                          : Icons.play_circle_fill_outlined),
-                    ),
-                    IconButton(
-                      iconSize: 80,
-                      color: Theme.of(context).cardColor,
-                      onPressed: onResetPressed,
-                      icon: const Icon(Icons.stop),
-                    ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(80, 0, 80, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(50)),
+                        child: IconButton(
+                          iconSize: 50,
+                          onPressed:
+                              isRunning ? onPausePressed : onStartPressed,
+                          icon: Icon(
+                            isRunning ? Icons.pause : Icons.play_arrow,
+                            color: Theme.of(context).cardColor,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(50)),
+                        child: IconButton(
+                          iconSize: 60,
+                          color: Theme.of(context).cardColor,
+                          onPressed: onResetPressed,
+                          icon: const Icon(Icons.stop),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
