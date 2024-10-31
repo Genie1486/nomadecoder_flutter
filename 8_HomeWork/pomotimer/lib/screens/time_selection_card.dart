@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class TimeSelectionCard extends StatelessWidget {
   final int minute;
+  final bool isSelected;
 
   const TimeSelectionCard({
     super.key,
     required this.minute,
+    required this.isSelected,
   });
 
   @override
@@ -18,10 +20,12 @@ class TimeSelectionCard extends StatelessWidget {
           width: 85,
           height: 60,
           decoration: BoxDecoration(
-            // color: Theme.of(context).cardColor,
+            color: isSelected
+                ? Theme.of(context).cardColor.withOpacity(0.75)
+                : Colors.transparent,
             border: Border.all(
-              color: Theme.of(context).cardColor, // 테두리 색상
-              width: 3, // 테두리 두께
+              color: Theme.of(context).cardColor.withOpacity(0.2), // 테두리 색상
+              width: 2, // 테두리 두께
             ),
             borderRadius: BorderRadius.circular(5),
           ),
@@ -29,7 +33,9 @@ class TimeSelectionCard extends StatelessWidget {
             '$minute',
             style: TextStyle(
               fontSize: Theme.of(context).textTheme.displayMedium!.fontSize,
-              color: Theme.of(context).textTheme.displayMedium!.color,
+              color: isSelected
+                  ? Theme.of(context).colorScheme.surface
+                  : Theme.of(context).textTheme.displayMedium!.color,
               fontWeight: Theme.of(context).textTheme.displayMedium!.fontWeight,
             ),
           ),

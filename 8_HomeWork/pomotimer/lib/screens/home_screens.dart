@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Timer를 통해 정해진 간격에 한번씩 함수를 실행할 수 있다.
   // late modifier를 써서 나중에 초기화한다고 약속함
-  late Timer timer;
+  Timer? timer;
 
   // onTick함수는 시간이 흐르도록 보이게 하기 위해
   // 1초 마다 totalSeconds에서 1을 빼고
@@ -58,18 +58,28 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void onPausePressed() {
-    timer.cancel();
     setState(() {
       isRunning = false;
     });
+    timer?.cancel();
   }
 
   void onResetPressed() {
     setState(() {
-      totalSeconds = twentyFiveMinutes;
+      totalSeconds = selectedMinutes * 60;
       isRunning = false;
     });
-    timer.cancel();
+    timer?.cancel();
+  }
+
+  void onSetMinutes(int minutes) {
+    setState(() {
+      totalSeconds = minutes * 60;
+      isRunning = false;
+      selectedMinutes = minutes;
+    });
+
+    timer?.cancel();
   }
 
   String format(int seconds) {
@@ -124,7 +134,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: [
                     for (var minute in [15, 20, 25, 30, 35])
-                      TimeSelectionCard(minute: minute)
+                      GestureDetector(
+                        onTap: () {
+                          onSetMinutes(minute);
+                        },
+                        child: TimeSelectionCard(
+                          minute: minute,
+                          isSelected: minute == selectedMinutes,
+                        ),
+                      )
                   ],
                 ),
               ),
