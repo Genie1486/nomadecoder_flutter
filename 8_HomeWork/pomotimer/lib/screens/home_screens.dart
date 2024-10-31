@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   static const twentyFiveMinutes = 1500;
   int totalSeconds = twentyFiveMinutes; // 25분을 초로 환산
   bool isRunning = false;
-  bool isBreakTime = true;
+  bool isBreakTime = false;
   int totalPomodoros = 0;
   int selectedMinutes = 25;
   int round = 0;
@@ -44,16 +44,25 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     if (totalSeconds == 0) {
-      setState(() {
-        totalPomodoros = totalPomodoros + 1;
-        isRunning = false;
-        totalSeconds = twentyFiveMinutes;
-        round += 1;
-        if (round == 4) {
-          goal += 1;
-          round = 0;
-        }
-      });
+      if (isBreakTime) {
+        setState(() {
+          isBreakTime = false;
+          totalSeconds = selectedMinutes * 60;
+        });
+      } else {
+        setState(() {
+          totalPomodoros = totalPomodoros + 1;
+          isRunning = false;
+          totalSeconds = selectedMinutes * 60;
+          round += 1;
+          if (round == 4) {
+            goal += 1;
+            round = 0;
+          }
+          startBreakTime();
+        });
+      }
+
       timer.cancel();
     } else {
       // setState는 상태가 변경되었음을 Flutter에게 알리는 메서드
@@ -104,6 +113,21 @@ class _HomeScreenState extends State<HomeScreen> {
     timer?.cancel();
   }
 
+  void startBreakTime() {
+    // Timer.periodic(duration, callback)은
+    // duration 마다 callback 함수를 실행한다.
+    // 여기서는 1초마다 onTick 함수를 실행하도록 지정
+    timer = Timer.periodic(
+      const Duration(seconds: 1),
+      onTick,
+    );
+
+    setState(() {
+      isBreakTime = true;
+      totalSeconds = 300;
+    });
+  }
+
   String format(int seconds) {
     var duration = Duration(seconds: seconds);
     return duration.toString().split(".").first.substring(2, 7);
@@ -126,13 +150,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollToCard(choicePossibleMinutes.indexOf(selectedMinutes)); // 빌드 후 스크롤
-    });
   }
 
   @override
   Widget build(BuildContext context) {
+    if (!isBreakTime) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _scrollToCard(
+            choicePossibleMinutes.indexOf(selectedMinutes)); // 빌드 후 스크롤
+      });
+    }
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
