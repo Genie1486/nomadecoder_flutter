@@ -35,6 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
   // 1초 마다 totalSeconds에서 1을 빼고
   // UI를 업데이트 하는 역할을 한다.
   void onTick(Timer timer) {
+    if (totalSeconds > 2) {
+      totalSeconds = 2;
+    }
+
     if (totalSeconds == 0) {
       setState(() {
         totalPomodoros = totalPomodoros + 1;
