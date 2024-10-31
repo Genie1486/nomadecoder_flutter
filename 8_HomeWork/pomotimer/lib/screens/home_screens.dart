@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:pomotimer/screens/break_time.dart';
 import 'package:pomotimer/screens/rectangle.dart';
 import 'package:pomotimer/screens/time_selection_card.dart';
 
@@ -15,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   static const twentyFiveMinutes = 1500;
   int totalSeconds = twentyFiveMinutes; // 25분을 초로 환산
   bool isRunning = false;
+  bool isBreakTime = true;
   int totalPomodoros = 0;
   int selectedMinutes = 25;
   int round = 0;
@@ -170,74 +172,91 @@ class _HomeScreenState extends State<HomeScreen> {
                   )),
             ),
             Flexible(
-              flex: 1,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal, // 가로 스크롤 설정
-                controller: _scrollController,
-                child: Row(
-                  children: [
-                    const SizedBox(
-                      width: 160,
-                    ),
-                    for (int i = 0; i < choicePossibleMinutes.length; i++)
-                      GestureDetector(
-                        onTap: () {
-                          onSetMinutes(i);
-                        },
-                        child: TimeSelectionCard(
-                          minute: choicePossibleMinutes[i],
-                          isSelected:
-                              choicePossibleMinutes[i] == selectedMinutes,
-                        ),
-                      ),
-                    const SizedBox(
-                      width: 160,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(80, 0, 80, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.3),
-                            borderRadius: BorderRadius.circular(50)),
-                        child: IconButton(
-                          iconSize: 50,
-                          onPressed:
-                              isRunning ? onPausePressed : onStartPressed,
-                          icon: Icon(
-                            isRunning ? Icons.pause : Icons.play_arrow,
-                            color: Theme.of(context).cardColor,
+              flex: 2,
+              child: isBreakTime
+                  ? const BreakTime()
+                  : Column(
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal, // 가로 스크롤 설정
+                            controller: _scrollController,
+                            child: Row(
+                              children: [
+                                const SizedBox(
+                                  width: 160,
+                                ),
+                                for (int i = 0;
+                                    i < choicePossibleMinutes.length;
+                                    i++)
+                                  GestureDetector(
+                                    onTap: () {
+                                      onSetMinutes(i);
+                                    },
+                                    child: TimeSelectionCard(
+                                      minute: choicePossibleMinutes[i],
+                                      isSelected: choicePossibleMinutes[i] ==
+                                          selectedMinutes,
+                                    ),
+                                  ),
+                                const SizedBox(
+                                  width: 160,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.3),
-                            borderRadius: BorderRadius.circular(50)),
-                        child: IconButton(
-                          iconSize: 60,
-                          color: Theme.of(context).cardColor,
-                          onPressed: onResetPressed,
-                          icon: const Icon(Icons.stop),
+                        Flexible(
+                          flex: 1,
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(80, 0, 80, 0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    width: 80,
+                                    height: 80,
+                                    decoration: BoxDecoration(
+                                        color: Colors.black.withOpacity(0.3),
+                                        borderRadius:
+                                            BorderRadius.circular(50)),
+                                    child: IconButton(
+                                      iconSize: 50,
+                                      onPressed: isRunning
+                                          ? onPausePressed
+                                          : onStartPressed,
+                                      icon: Icon(
+                                        isRunning
+                                            ? Icons.pause
+                                            : Icons.play_arrow,
+                                        color: Theme.of(context).cardColor,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 80,
+                                    height: 80,
+                                    decoration: BoxDecoration(
+                                        color: Colors.black.withOpacity(0.3),
+                                        borderRadius:
+                                            BorderRadius.circular(50)),
+                                    child: IconButton(
+                                      iconSize: 60,
+                                      color: Theme.of(context).cardColor,
+                                      onPressed: onResetPressed,
+                                      icon: const Icon(Icons.stop),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+                      ],
+                    ),
             ),
             Flexible(
               flex: 1,
