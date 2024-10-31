@@ -23,6 +23,11 @@ class App extends StatelessWidget {
           displayLarge: TextStyle(
             color: Color(0xFF232B55),
           ),
+          displayMedium: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.w600,
+          ),
           displaySmall: TextStyle(
             color: Colors.white,
             fontSize: 20,
