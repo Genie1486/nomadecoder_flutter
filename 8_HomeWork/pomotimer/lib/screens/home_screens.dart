@@ -18,6 +18,15 @@ class _HomeScreenState extends State<HomeScreen> {
   int totalPomodoros = 0;
   int selectedMinutes = 25;
 
+  final ScrollController _scrollController = ScrollController();
+  final List<int> choicePossibleMinutes = [
+    15,
+    20,
+    25,
+    30,
+    35,
+  ];
+
   // Timer를 통해 정해진 간격에 한번씩 함수를 실행할 수 있다.
   // late modifier를 써서 나중에 초기화한다고 약속함
   Timer? timer;
@@ -72,19 +81,41 @@ class _HomeScreenState extends State<HomeScreen> {
     timer?.cancel();
   }
 
-  void onSetMinutes(int minutes) {
+  void onSetMinutes(int index) {
     setState(() {
-      totalSeconds = minutes * 60;
+      selectedMinutes = choicePossibleMinutes[index];
+      totalSeconds = selectedMinutes * 60;
       isRunning = false;
-      selectedMinutes = minutes;
     });
-
+    _scrollToCard(index);
     timer?.cancel();
   }
 
   String format(int seconds) {
     var duration = Duration(seconds: seconds);
     return duration.toString().split(".").first.substring(2, 7);
+  }
+
+  void _scrollToCard(int index) {
+    // 카드의 위치 계산
+    const double cardWidth = 105; // 카드 너비
+    final double screenWidth = MediaQuery.of(context).size.width; // 화면 너비
+    final double offset =
+        160 + cardWidth / 2 - screenWidth / 2 + (index * cardWidth);
+
+    _scrollController.animateTo(
+      offset,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollToCard(choicePossibleMinutes.indexOf(selectedMinutes)); // 빌드 후 스크롤
+    });
   }
 
   @override
@@ -131,18 +162,26 @@ class _HomeScreenState extends State<HomeScreen> {
               flex: 1,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal, // 가로 스크롤 설정
+                controller: _scrollController,
                 child: Row(
                   children: [
-                    for (var minute in [15, 20, 25, 30, 35])
+                    const SizedBox(
+                      width: 160,
+                    ),
+                    for (int i = 0; i < choicePossibleMinutes.length; i++)
                       GestureDetector(
                         onTap: () {
-                          onSetMinutes(minute);
+                          onSetMinutes(i);
                         },
                         child: TimeSelectionCard(
-                          minute: minute,
-                          isSelected: minute == selectedMinutes,
+                          minute: choicePossibleMinutes[i],
+                          isSelected:
+                              choicePossibleMinutes[i] == selectedMinutes,
                         ),
-                      )
+                      ),
+                    const SizedBox(
+                      width: 160,
+                    ),
                   ],
                 ),
               ),
