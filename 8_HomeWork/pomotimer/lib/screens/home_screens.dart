@@ -86,52 +86,33 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Column(
           children: [
             Flexible(
-              // Flexible Widget에서
-              // flex 값을 통해
-              // 하나의 박스가 얼마나 공간을 차지하 지
-              // 비율을 정할 수 있다.
-              flex: 4,
+              flex: 2,
               child: Container(
-                  // alignment: Alignment.bottomCenter
-                  // Container가 차지하는 영역의
-                  // 아래쪽 가운데에 child Widget을 위치
                   alignment: Alignment.bottomCenter,
-                  child: Column(
-                    children: [
-                      Text(
-                        format(totalSeconds),
-                        style: TextStyle(
-                          color: Theme.of(context).cardColor,
-                          fontSize: 89,
-                          fontWeight: FontWeight.w600,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(75, 0, 75, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Rectangle(
+                          width: 110,
+                          height: 150,
+                          content: format(totalSeconds).split(":")[0],
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(75, 0, 75, 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Rectangle(
-                              width: 110,
-                              height: 150,
-                            ),
-                            Text(
-                              ':',
-                              style: TextStyle(
-                                color: Theme.of(context)
-                                    .cardColor
-                                    .withOpacity(0.3),
-                                fontSize: 89,
-                              ),
-                            ),
-                            const Rectangle(
-                              width: 110,
-                              height: 150,
-                            ),
-                          ],
+                        Text(
+                          ':',
+                          style: TextStyle(
+                            color: Theme.of(context).cardColor.withOpacity(0.3),
+                            fontSize: 89,
+                          ),
                         ),
-                      ),
-                    ],
+                        Rectangle(
+                          width: 110,
+                          height: 150,
+                          content: format(totalSeconds).split(":")[1],
+                        ),
+                      ],
+                    ),
                   )),
             ),
             Flexible(

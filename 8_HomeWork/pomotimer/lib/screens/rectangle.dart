@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class Rectangle extends StatelessWidget {
   final double width, height;
+  final String content;
 
   const Rectangle({
     super.key,
     required this.width,
     required this.height,
+    required this.content,
   });
 
   @override
@@ -43,7 +45,7 @@ class Rectangle extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              '25',
+              content,
               style: TextStyle(
                   color: Theme.of(context).colorScheme.surface,
                   fontSize: 70,
