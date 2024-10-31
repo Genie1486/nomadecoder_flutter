@@ -17,6 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isRunning = false;
   int totalPomodoros = 0;
   int selectedMinutes = 25;
+  int round = 0;
+  int goal = 0;
 
   final ScrollController _scrollController = ScrollController();
   final List<int> choicePossibleMinutes = [
@@ -35,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // 1초 마다 totalSeconds에서 1을 빼고
   // UI를 업데이트 하는 역할을 한다.
   void onTick(Timer timer) {
-    if (totalSeconds > 2) {
+    if (totalSeconds > 1) {
       totalSeconds = 2;
     }
 
@@ -44,6 +46,11 @@ class _HomeScreenState extends State<HomeScreen> {
         totalPomodoros = totalPomodoros + 1;
         isRunning = false;
         totalSeconds = twentyFiveMinutes;
+        round += 1;
+        if (round == 4) {
+          goal += 1;
+          round = 0;
+        }
       });
       timer.cancel();
     } else {
@@ -245,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            '0/4',
+                            '$round/4',
                             style: TextStyle(
                               fontSize: Theme.of(context)
                                   .textTheme
@@ -273,7 +280,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            '0/12',
+                            '$goal/12',
                             style: TextStyle(
                               fontSize: Theme.of(context)
                                   .textTheme
