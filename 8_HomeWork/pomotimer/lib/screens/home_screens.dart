@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:pomotimer/screens/rectangle.dart';
+import 'package:pomotimer/screens/time_selection_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int totalSeconds = twentyFiveMinutes; // 25분을 초로 환산
   bool isRunning = false;
   int totalPomodoros = 0;
+  int selectedMinutes = 25;
 
   // Timer를 통해 정해진 간격에 한번씩 함수를 실행할 수 있다.
   // late modifier를 써서 나중에 초기화한다고 약속함
@@ -116,12 +118,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   )),
             ),
             Flexible(
-              // Flexible Widget에서
-              // flex 값을 통해
-              // 하나의 박스가 얼마나 공간을 차지하 지
-              // 비율을 정할 수 있다.
               flex: 1,
-              child: Container(),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal, // 가로 스크롤 설정
+                child: Row(
+                  children: [
+                    for (var minute in [15, 20, 25, 30, 35])
+                      TimeSelectionCard(minute: minute)
+                  ],
+                ),
+              ),
             ),
             Flexible(
               flex: 1,
