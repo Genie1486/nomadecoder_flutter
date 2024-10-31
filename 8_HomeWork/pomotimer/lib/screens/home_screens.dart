@@ -12,15 +12,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
+      appBar: AppBar(
+        titleTextStyle: Theme.of(context).textTheme.displaySmall,
+        title: const Text('POMOTIMER'),
+      ),
       body: Column(
         children: [
           Flexible(
+            flex: 3,
             child: Container(),
           ),
           Flexible(
-            child: Container(),
-          ),
-          Flexible(
+            flex: 1,
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.red,
