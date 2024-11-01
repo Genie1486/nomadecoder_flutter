@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   // 1. Future 안의 데이터를 가져오고 싶다.
   // 2. Future의 로딩상태를 build 메서드에게 알리고 싶다.
   // 이 것을 해주는 Widget이 FutureBuilder Widget이다.
-  Future<List<WebtoonModel>> webtoons = ApiService.getTodaysToons();
+  final Future<List<WebtoonModel>> webtoons = ApiService.getTodaysToons();
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +29,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
+      // FutureBuilder는 future 값을 기다리고 데이터가 존재하는지 알려준다
       // FutureBuilder(future, builder)에서
       // FutureBuilder가 await future로 future의 값을 기다려 준다.
       // builder는 UI를 그려주는 함수
@@ -39,7 +40,9 @@ class HomeScreen extends StatelessWidget {
           if (snapshot.hasData) {
             return const Text("There is data!");
           }
-          return const Text('Loading...');
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );
