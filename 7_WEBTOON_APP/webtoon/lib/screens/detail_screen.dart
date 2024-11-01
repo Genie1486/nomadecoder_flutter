@@ -53,109 +53,111 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 50,
-        ),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 50,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Hero(
-                  tag: widget.id,
-                  child: Container(
-                    width: 250,
-                    // clipBehavior는 자식의 부모 영역 침범을 제어하는 방법
-                    clipBehavior: Clip.hardEdge,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 15, // 그림자가 얼마나 멀리까지 드리울지
-                          offset: const Offset(10, 10), // 그림자가 어디에 위치할지
-                          color: Colors.black.withOpacity(0.5),
-                        )
-                      ],
-                    ),
-                    child: Image.network(
-                      widget.thumb,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 50,
+          ),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 50,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Hero(
+                    tag: widget.id,
+                    child: Container(
+                      width: 250,
+                      // clipBehavior는 자식의 부모 영역 침범을 제어하는 방법
+                      clipBehavior: Clip.hardEdge,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 15, // 그림자가 얼마나 멀리까지 드리울지
+                            offset: const Offset(10, 10), // 그림자가 어디에 위치할지
+                            color: Colors.black.withOpacity(0.5),
+                          )
+                        ],
+                      ),
+                      child: Image.network(
+                        widget.thumb,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            FutureBuilder(
-              future: webtoon,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        snapshot.data!.about,
-                        style: const TextStyle(
-                          fontSize: 16,
+                ],
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              FutureBuilder(
+                future: webtoon,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          snapshot.data!.about,
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        '${snapshot.data!.genre} / ${snapshot.data!.age}',
-                        style: const TextStyle(
-                          fontSize: 16,
+                        const SizedBox(
+                          height: 15,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 25,
-                      ),
-                      FutureBuilder(
-                        future: episodes,
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            // ListView나 ListViewBuilider는
-                            // 아이템이 많거나 최적하가 중요할 때 사용한다.
-                            return Column(
-                              children: [
-                                for (var episode in snapshot.data!)
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.green.shade300,
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 10,
-                                        horizontal: 20,
+                        Text(
+                          '${snapshot.data!.genre} / ${snapshot.data!.age}',
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        FutureBuilder(
+                          future: episodes,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              // ListView나 ListViewBuilider는
+                              // 아이템이 많거나 최적하가 중요할 때 사용한다.
+                              return Column(
+                                children: [
+                                  for (var episode in snapshot.data!)
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.green.shade300,
                                       ),
-                                      child: Row(
-                                        children: [
-                                          Text(episode.title),
-                                          const Icon(
-                                              Icons.chevron_right_rounded),
-                                        ],
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 10,
+                                          horizontal: 20,
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Text(episode.title),
+                                            const Icon(
+                                                Icons.chevron_right_rounded),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  )
-                              ],
-                            );
-                          }
-                          return Container();
-                        },
-                      )
-                    ],
-                  );
-                }
-                return const Text("...");
-              },
-            )
-          ],
+                                    )
+                                ],
+                              );
+                            }
+                            return Container();
+                          },
+                        )
+                      ],
+                    );
+                  }
+                  return const Text("...");
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
