@@ -55,14 +55,9 @@ class _DetailScreenState extends State<DetailScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 50,
-          ),
+          padding: const EdgeInsets.all(50),
           child: Column(
             children: [
-              const SizedBox(
-                height: 50,
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
