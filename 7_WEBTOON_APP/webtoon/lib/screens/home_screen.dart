@@ -49,28 +49,33 @@ class HomeScreen extends StatelessWidget {
             // ListView.separated는 separatorBuilder라는 매개변수를 가지고 있다.
             // separatorBuilder는 Widget을 리턴해주는 함수로
             // 이 Widget은 리스트 아이템 사이에 렌더링 된다.
-            return ListView.separated(
-              scrollDirection: Axis.horizontal, // 스크롤 방향 설정
-              itemCount: snapshot
-                  .data!.length, // ListView의 item 개수 설정 (ListView를 최적화 해주는 기능)
-              itemBuilder: (context, index) {
-                // ListView.builder은 모든 아이템을 한 번에 만들지 않고
-                // 만들려는 아이템에 itemBuilder 함수를 실행한다.
-                // item Builder는 ListView가 아이템을 build할 때 호출하는 함수
-                print(index);
-                var webtoon = snapshot.data![index];
-
-                return Text(webtoon.title);
-              },
-              separatorBuilder: (context, index) => const SizedBox(
-                width: 20,
-              ),
-            );
+            return makeList(snapshot);
           }
           return const Center(
             child: CircularProgressIndicator(),
           );
         },
+      ),
+    );
+  }
+
+  ListView makeList(AsyncSnapshot<List<WebtoonModel>> snapshot) {
+    return ListView.separated(
+      scrollDirection: Axis.horizontal, // 스크롤 방향 설정
+      itemCount:
+          snapshot.data!.length, // ListView의 item 개수 설정 (ListView를 최적화 해주는 기능)
+      itemBuilder: (context, index) {
+        // ListView.builder은 모든 아이템을 한 번에 만들지 않고
+        // 만들려는 아이템에 itemBuilder 함수를 실행한다.
+        // item Builder는 ListView가 아이템을 build할 때 호출하는 함수
+        print(index);
+        var webtoon = snapshot.data![index];
+
+        return Text(webtoon.title);
+      },
+      // separatorBuilder는 아이템들 사이에 구분자를 넣어주는 builder
+      separatorBuilder: (context, index) => const SizedBox(
+        width: 20,
       ),
     );
   }
