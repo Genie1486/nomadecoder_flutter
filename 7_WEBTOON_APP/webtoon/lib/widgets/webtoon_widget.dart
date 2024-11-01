@@ -18,14 +18,17 @@ class Webtoon extends StatelessWidget {
       // onTap은 유저가 클릭했을 때 실행될 함수를 지정
       onTap: () {
         // screen을 변경하기 위해서 Navigator 사용
-        // Navigator.push(context, route) 에서
+        // Navigator는 우리가 만든 DetailScreen Widget을
+        // 지금 보는 화면의 위에 올려준다.
 
+        // Navigator.push(context, route) 에서
         // route는
         // DetailScreen 같은 StatelessWidget을
         // 애니메이션 효과로 감싸서
         // 스크린처럼 보이도록 하겠다는 것
         Navigator.push(
           context,
+          // MaterialPageRoute는 화면 이동 관련 애니메이션을 생성해준다.
           MaterialPageRoute(
             builder: (context) => DetailScreen(
               title: title,
@@ -39,6 +42,7 @@ class Webtoon extends StatelessWidget {
       child: Column(
         children: [
           // Hero Widget은 화면을 전환할 때 멋진 애니메이션을 제공해준다.
+          // Hero는 두 화면 사이에 애니메이션을 주는 컴포넌트
           // 파워포인트의 모핑효과 비슷
           Hero(
             tag: id,
