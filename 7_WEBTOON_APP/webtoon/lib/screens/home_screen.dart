@@ -45,7 +45,11 @@ class HomeScreen extends StatelessWidget {
             // 많은 양의 데이터를 연속적으로 보여주고 싶을 때 ListView 사용
             // ListView는 여러 항목을 나열하는데 최적화된 Widget이다.
             // ListView.builder는 좀 더 최적화된 ListView
-            return ListView.builder(
+
+            // ListView.separated는 separatorBuilder라는 매개변수를 가지고 있다.
+            // separatorBuilder는 Widget을 리턴해주는 함수로
+            // 이 Widget은 리스트 아이템 사이에 렌더링 된다.
+            return ListView.separated(
               scrollDirection: Axis.horizontal, // 스크롤 방향 설정
               itemCount: snapshot
                   .data!.length, // ListView의 item 개수 설정 (ListView를 최적화 해주는 기능)
@@ -58,6 +62,9 @@ class HomeScreen extends StatelessWidget {
 
                 return Text(webtoon.title);
               },
+              separatorBuilder: (context, index) => const SizedBox(
+                width: 20,
+              ),
             );
           }
           return const Center(
