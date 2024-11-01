@@ -4,14 +4,15 @@ import 'package:http/http.dart' as http;
 import 'package:webtoon/models/webtoon_model.dart';
 
 class ApiService {
-  final String baseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
-  final String today = "today";
+  static const String baseUrl =
+      "https://webtoon-crawler.nomadcoders.workers.dev";
+  static const String today = "today";
 
   // 우리가 getTodaysToons라는 함수를 실행할 때
   // Dart가 바로 코드를 처리하지 않고
   // API 요청이 처리돼서 응답을 반환할 때까지 기다리게 하고 싶다.
   // 이것을 async(비동기) programming이라고 한다.
-  Future<List<WebtoonModel>> getTodaysToons() async {
+  static Future<List<WebtoonModel>> getTodaysToons() async {
     List<WebtoonModel> webtoonInstances = [];
     final url = Uri.parse('$baseUrl/$today');
     // Dart가 결과를 기다리게 하고 싶을 때 await 키워드를 사용
