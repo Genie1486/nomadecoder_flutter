@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:webtoon/models/webtoon_model.dart';
 import 'package:webtoon/services/api_service.dart';
+import 'package:webtoon/widgets/webtoon_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -91,39 +92,11 @@ class HomeScreen extends StatelessWidget {
         print(index);
 
         var webtoon = snapshot.data![index];
-        print(webtoon.thumb);
-        return Column(
-          children: [
-            // Image.network(src)는
-            // 네트워크 주소에 있는 이미지를 가져온다.
-            Container(
-              width: 250,
-              // clipBehavior는 자식의 부모 영역 침범을 제어하는 방법
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 15, // 그림자가 얼마나 멀리까지 드리울지
-                    offset: const Offset(10, 10), // 그림자가 어디에 위치할지
-                    color: Colors.black.withOpacity(0.5),
-                  )
-                ],
-              ),
-              child: Image.network(
-                webtoon.thumb,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              webtoon.title,
-              style: const TextStyle(
-                fontSize: 22,
-              ),
-            ),
-          ],
+
+        return Webtoon(
+          title: webtoon.title,
+          thumb: webtoon.thumb,
+          id: webtoon.id,
         );
       },
       // separatorBuilder는 아이템들 사이에 구분자를 넣어주는 builder
