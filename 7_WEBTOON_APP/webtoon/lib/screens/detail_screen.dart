@@ -126,11 +126,21 @@ class _DetailScreenState extends State<DetailScreen> {
                               children: [
                                 for (var episode in snapshot.data!)
                                   Container(
-                                    child: Row(
-                                      children: [
-                                        Text(episode.title),
-                                        const Icon(Icons.chevron_right_rounded),
-                                      ],
+                                    decoration: BoxDecoration(
+                                      color: Colors.green.shade300,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 10,
+                                        horizontal: 20,
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Text(episode.title),
+                                          const Icon(
+                                              Icons.chevron_right_rounded),
+                                        ],
+                                      ),
                                     ),
                                   )
                               ],
