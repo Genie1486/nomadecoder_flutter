@@ -36,9 +36,23 @@ class HomeScreen extends StatelessWidget {
       body: FutureBuilder(
         future: webtoons,
         builder: (context, snapshot) {
+          // 여기 코드는
+          // future의 동작이 끝나고 서버가 응답했을 때
+          // 동작한다.
+
           // snapshot을 이용하면 Future의 상태를 알 수 있다.
           if (snapshot.hasData) {
-            return const Text("There is data!");
+            // 많은 양의 데이터를 연속적으로 보여주고 싶을 때 ListView 사용
+            // ListView는 여러 항목을 나열하는데 최적화된 Widget이다.
+            return ListView(
+              children: [
+                // snapshot.data!
+                // snapshot.data는 null이 아니라고 다트에게 말해주는 부분
+                // 이 코드는 snapshot.hasdata가 true일 때 동작하기 때문에
+                // snapshot.data는 null이 될 수 없다.
+                for (var webtoon in snapshot.data!) Text(webtoon.title)
+              ],
+            );
           }
           return const Center(
             child: CircularProgressIndicator(),
