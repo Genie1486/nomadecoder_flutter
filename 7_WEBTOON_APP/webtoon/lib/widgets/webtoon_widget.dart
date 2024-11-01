@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webtoon/screens/detail_screen.dart';
 
 class Webtoon extends StatelessWidget {
   final String title, thumb, id;
@@ -16,7 +17,23 @@ class Webtoon extends StatelessWidget {
     return GestureDetector(
       // onTap은 유저가 클릭했을 때 실행될 함수를 지정
       onTap: () {
-        print('take me homeee');
+        // screen을 변경하기 위해서 Navigator 사용
+        // Navigator.push(context, route) 에서
+
+        // route는
+        // DetailScreen 같은 StatelessWidget을
+        // 애니메이션 효과로 감싸서
+        // 스크린처럼 보이도록 하겠다는 것
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailScreen(
+              title: title,
+              thumb: thumb,
+              id: id,
+            ),
+          ),
+        );
       },
       child: Column(
         children: [
