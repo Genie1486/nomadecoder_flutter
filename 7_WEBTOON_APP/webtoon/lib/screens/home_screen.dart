@@ -79,6 +79,9 @@ class HomeScreen extends StatelessWidget {
   ListView makeList(AsyncSnapshot<List<WebtoonModel>> snapshot) {
     return ListView.separated(
       scrollDirection: Axis.horizontal, // 스크롤 방향 설정
+      // ListView는 padding이 없어서 위쪽에는 그림자 효과가 잘려서 나타남
+      // 그래서 padding을 부여해줌
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       itemCount:
           snapshot.data!.length, // ListView의 item 개수 설정 (ListView를 최적화 해주는 기능)
       itemBuilder: (context, index) {
@@ -99,6 +102,13 @@ class HomeScreen extends StatelessWidget {
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 15, // 그림자가 얼마나 멀리까지 드리울지
+                    offset: const Offset(10, 10), // 그림자가 어디에 위치할지
+                    color: Colors.black.withOpacity(0.5),
+                  )
+                ],
               ),
               child: Image.network(
                 webtoon.thumb,
