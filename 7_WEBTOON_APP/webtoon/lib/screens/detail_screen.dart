@@ -127,8 +127,10 @@ class _DetailScreenState extends State<DetailScreen> {
                                 children: [
                                   for (var episode in snapshot.data!)
                                     Container(
+                                      margin: const EdgeInsets.only(bottom: 10),
                                       decoration: BoxDecoration(
-                                        color: Colors.green.shade300,
+                                        color: Colors.green.shade400,
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -136,10 +138,19 @@ class _DetailScreenState extends State<DetailScreen> {
                                           horizontal: 20,
                                         ),
                                         child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(episode.title),
+                                            Text(
+                                              episode.title,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
                                             const Icon(
-                                                Icons.chevron_right_rounded),
+                                              Icons.chevron_right_rounded,
+                                              color: Colors.white,
+                                            ),
                                           ],
                                         ),
                                       ),
