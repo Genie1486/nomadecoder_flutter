@@ -34,22 +34,25 @@ class DetailScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                width: 250,
-                // clipBehavior는 자식의 부모 영역 침범을 제어하는 방법
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 15, // 그림자가 얼마나 멀리까지 드리울지
-                      offset: const Offset(10, 10), // 그림자가 어디에 위치할지
-                      color: Colors.black.withOpacity(0.5),
-                    )
-                  ],
-                ),
-                child: Image.network(
-                  thumb,
+              Hero(
+                tag: id,
+                child: Container(
+                  width: 250,
+                  // clipBehavior는 자식의 부모 영역 침범을 제어하는 방법
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 15, // 그림자가 얼마나 멀리까지 드리울지
+                        offset: const Offset(10, 10), // 그림자가 어디에 위치할지
+                        color: Colors.black.withOpacity(0.5),
+                      )
+                    ],
+                  ),
+                  child: Image.network(
+                    thumb,
+                  ),
                 ),
               ),
             ],
