@@ -44,14 +44,20 @@ class HomeScreen extends StatelessWidget {
           if (snapshot.hasData) {
             // 많은 양의 데이터를 연속적으로 보여주고 싶을 때 ListView 사용
             // ListView는 여러 항목을 나열하는데 최적화된 Widget이다.
-            return ListView(
-              children: [
-                // snapshot.data!
-                // snapshot.data는 null이 아니라고 다트에게 말해주는 부분
-                // 이 코드는 snapshot.hasdata가 true일 때 동작하기 때문에
-                // snapshot.data는 null이 될 수 없다.
-                for (var webtoon in snapshot.data!) Text(webtoon.title)
-              ],
+            // ListView.builder는 좀 더 최적화된 ListView
+            return ListView.builder(
+              scrollDirection: Axis.horizontal, // 스크롤 방향 설정
+              itemCount: snapshot
+                  .data!.length, // ListView의 item 개수 설정 (ListView를 최적화 해주는 기능)
+              itemBuilder: (context, index) {
+                // ListView.builder은 모든 아이템을 한 번에 만들지 않고
+                // 만들려는 아이템에 itemBuilder 함수를 실행한다.
+                // item Builder는 ListView가 아이템을 build할 때 호출하는 함수
+                print(index);
+                var webtoon = snapshot.data![index];
+
+                return Text(webtoon.title);
+              },
             );
           }
           return const Center(
