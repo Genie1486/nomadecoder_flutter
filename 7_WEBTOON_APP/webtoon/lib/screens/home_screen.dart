@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
             return Column(
               children: [
                 const SizedBox(
-                  height: 200,
+                  height: 50,
                 ),
                 // 에러발생
                 // FlutterError (Horizontal viewport was given unbounded height.
@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                 // In this case, a horizontal viewport was given an unlimited amount of vertical space in which to expand.)
 
                 // ListView는 높이가 없기 때문에
-                // Column은 ListView가 얼마나 큰지를 알지 못한다.
+                // 레이아웃 시스템은 ListView가 얼마나 큰지를 알지 못한다.
                 // 따라서 ListView에 제한된 높이를 줘서 문제를 해결하였다.
                 Expanded(
                   child: makeList(snapshot),
@@ -86,13 +86,23 @@ class HomeScreen extends StatelessWidget {
         // 만들려는 아이템에 itemBuilder 함수를 실행한다.
         // item Builder는 ListView가 아이템을 build할 때 호출하는 함수
         print(index);
-        var webtoon = snapshot.data![index];
 
-        return Text(webtoon.title);
+        var webtoon = snapshot.data![index];
+        print(webtoon.thumb);
+        return Column(
+          children: [
+            // Image.network(src)는
+            // 네트워크 주소에 있는 이미지를 가져온다.
+            Image.network(
+              webtoon.thumb,
+            ),
+            Text(webtoon.title),
+          ],
+        );
       },
       // separatorBuilder는 아이템들 사이에 구분자를 넣어주는 builder
       separatorBuilder: (context, index) => const SizedBox(
-        width: 20,
+        width: 40,
       ),
     );
   }
