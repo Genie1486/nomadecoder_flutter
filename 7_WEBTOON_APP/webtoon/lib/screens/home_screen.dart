@@ -93,12 +93,26 @@ class HomeScreen extends StatelessWidget {
           children: [
             // Image.network(src)는
             // 네트워크 주소에 있는 이미지를 가져온다.
-            Image.network(
-              webtoon.thumb,
-              // HTTP request failed, statusCode: 403
-              // 에러가 발생하여 다음 헤더를 추가
+            Container(
+              width: 250,
+              // clipBehavior는 자식의 부모 영역 침범을 제어하는 방법
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Image.network(
+                webtoon.thumb,
+              ),
             ),
-            Text(webtoon.title),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              webtoon.title,
+              style: const TextStyle(
+                fontSize: 22,
+              ),
+            ),
           ],
         );
       },
