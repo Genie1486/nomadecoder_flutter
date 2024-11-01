@@ -140,6 +140,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                               episode.title,
                                               style: const TextStyle(
                                                 color: Colors.white,
+                                                fontSize: 16,
                                               ),
                                             ),
                                             const Icon(
