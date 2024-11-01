@@ -49,7 +49,24 @@ class HomeScreen extends StatelessWidget {
             // ListView.separated는 separatorBuilder라는 매개변수를 가지고 있다.
             // separatorBuilder는 Widget을 리턴해주는 함수로
             // 이 Widget은 리스트 아이템 사이에 렌더링 된다.
-            return makeList(snapshot);
+            return Column(
+              children: [
+                const SizedBox(
+                  height: 200,
+                ),
+                // 에러발생
+                // FlutterError (Horizontal viewport was given unbounded height.
+                // Viewports expand in the cross axis to fill their container and constrain their children to match their extent in the cross axis.
+                // In this case, a horizontal viewport was given an unlimited amount of vertical space in which to expand.)
+
+                // ListView는 높이가 없기 때문에
+                // Column은 ListView가 얼마나 큰지를 알지 못한다.
+                // 따라서 ListView에 제한된 높이를 줘서 문제를 해결하였다.
+                Expanded(
+                  child: makeList(snapshot),
+                ),
+              ],
+            );
           }
           return const Center(
             child: CircularProgressIndicator(),
