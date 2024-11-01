@@ -113,6 +113,25 @@ class _DetailScreenState extends State<DetailScreen> {
                           fontSize: 16,
                         ),
                       ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      FutureBuilder(
+                        future: episodes,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            // ListView나 ListViewBuilider는
+                            // 아이템이 많거나 최적하가 중요할 때 사용한다.
+                            return Column(
+                              children: [
+                                for (var episode in snapshot.data!)
+                                  Text(episode.title)
+                              ],
+                            );
+                          }
+                          return Container();
+                        },
+                      )
                     ],
                   ),
                 );
