@@ -32,6 +32,7 @@ class Webtoon extends StatelessWidget {
               thumb: thumb,
               id: id,
             ),
+            fullscreenDialog: true, // 팝업 창 느낌..^^ 'x' 버튼을 누르면 원래창으로
           ),
         );
       },
