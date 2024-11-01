@@ -46,6 +46,12 @@ class _DetailScreenState extends State<DetailScreen> {
         elevation: 2, // 밑에 그림자
         backgroundColor: Colors.white, // AppBar의 배경색
         foregroundColor: Colors.green, // AppBar의 글자색 설정
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.favorite_outline_outlined),
+          ),
+        ],
         title: Text(
           widget.title,
           style: const TextStyle(
