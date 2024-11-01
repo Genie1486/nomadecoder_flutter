@@ -97,10 +97,6 @@ class HomeScreen extends StatelessWidget {
               webtoon.thumb,
               // HTTP request failed, statusCode: 403
               // 에러가 발생하여 다음 헤더를 추가
-              headers: const {
-                "User-Agent":
-                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
-              },
             ),
             Text(webtoon.title),
           ],
