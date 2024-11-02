@@ -21,8 +21,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.blue, // Colors.white,
-        title: const Text("MovieFlix"),
+        backgroundColor: Colors.white, // Colors.white,
       ),
       body: SingleChildScrollView(
         child: Column(
