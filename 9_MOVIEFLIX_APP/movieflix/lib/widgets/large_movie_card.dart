@@ -16,7 +16,7 @@ class LargeMovieCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const DetailScreen(),
+            builder: (context) => DetailScreen(),
           ),
         );
       },
