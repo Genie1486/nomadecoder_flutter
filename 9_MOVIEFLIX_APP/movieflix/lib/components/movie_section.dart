@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movieflix/enums/card_size.dart';
 import 'package:movieflix/models/movie_model.dart';
+import 'package:movieflix/widgets/large_movie_card.dart';
 
 class MovieSection extends StatelessWidget {
   final String sectionTitle;
@@ -62,18 +63,7 @@ class MovieSection extends StatelessWidget {
         print(index);
         var movie = snapshot.data![index];
 
-        return Container(
-          clipBehavior: Clip.hardEdge,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Image.network(
-            movie.posterPath,
-            width: 330,
-            height: 230,
-            fit: BoxFit.cover,
-          ),
-        );
+        return LargeMovieCard(posterPath: movie.posterPath);
       },
       separatorBuilder: (context, index) => const SizedBox(
         width: 15,
