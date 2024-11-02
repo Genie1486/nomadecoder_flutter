@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:movieflix/components/movie_section.dart';
+import 'package:movieflix/enums/card_size.dart';
+import 'package:movieflix/models/movie_model.dart';
+import 'package:movieflix/services/api_service.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final Future<List<MovieModel>> popularMovies = ApiService.getPopularMovies();
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,11 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          MovieSection(),
+          MovieSection(
+            sectionTitle: "Popular Movies",
+            cardSize: CardSize.large,
+            movies: popularMovies,
+          ),
         ],
       ),
     );
