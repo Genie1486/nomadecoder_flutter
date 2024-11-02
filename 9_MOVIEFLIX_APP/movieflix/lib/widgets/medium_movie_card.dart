@@ -40,7 +40,7 @@ class MediumMovieCard extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
             softWrap: true,
-            maxLines: 3,
+            maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
         ),

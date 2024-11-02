@@ -37,7 +37,7 @@ class MovieSection extends StatelessWidget {
             height: 18,
           ),
           SizedBox(
-            height: 230,
+            height: 190,
             child: FutureBuilder(
               future: movies,
               builder: (context, snapshot) {
@@ -65,14 +65,14 @@ class MovieSection extends StatelessWidget {
 
         if (cardSize == CardSize.large) {
           return LargeMovieCard(
-            posterPath: movie.posterPath,
+            posterPath: movie.backDropPath,
           );
         }
 
         if (cardSize == CardSize.medium) {
           return MediumMovieCard(
             title: movie.title,
-            posterPath: movie.posterPath,
+            posterPath: movie.backDropPath,
           );
         }
 
