@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movieflix/enums/card_size.dart';
 import 'package:movieflix/models/movie_model.dart';
 import 'package:movieflix/widgets/large_movie_card.dart';
+import 'package:movieflix/widgets/medium_movie_card.dart';
 
 class MovieSection extends StatelessWidget {
   final String sectionTitle;
@@ -24,20 +25,19 @@ class MovieSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 40,
-            alignment: Alignment.topLeft,
-            child: Text(
-              sectionTitle,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w600,
-                height: 1,
-              ),
+          Text(
+            sectionTitle,
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+              height: 1,
             ),
           ),
+          const SizedBox(
+            height: 18,
+          ),
           SizedBox(
-            height: 200,
+            height: 230,
             child: FutureBuilder(
               future: movies,
               builder: (context, snapshot) {
@@ -63,7 +63,20 @@ class MovieSection extends StatelessWidget {
         print(index);
         var movie = snapshot.data![index];
 
-        return LargeMovieCard(posterPath: movie.posterPath);
+        if (cardSize == CardSize.large) {
+          return LargeMovieCard(
+            posterPath: movie.posterPath,
+          );
+        }
+
+        if (cardSize == CardSize.medium) {
+          return MediumMovieCard(
+            title: movie.title,
+            posterPath: movie.posterPath,
+          );
+        }
+
+        return null;
       },
       separatorBuilder: (context, index) => const SizedBox(
         width: 15,

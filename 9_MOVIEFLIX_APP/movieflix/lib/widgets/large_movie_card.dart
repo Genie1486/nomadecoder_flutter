@@ -15,11 +15,13 @@ class LargeMovieCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Image.network(
-        posterPath,
+      child: SizedBox(
         width: 330,
         height: 230,
-        fit: BoxFit.cover,
+        child: Image.network(
+          posterPath,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

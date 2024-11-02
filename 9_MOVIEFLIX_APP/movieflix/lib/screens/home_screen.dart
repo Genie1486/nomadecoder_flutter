@@ -17,14 +17,21 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.blue, // Colors.white,
         title: const Text("MovieFlix"),
       ),
-      body: Column(
-        children: [
-          MovieSection(
-            sectionTitle: "Popular Movies",
-            cardSize: CardSize.large,
-            movies: popularMovies,
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            MovieSection(
+              sectionTitle: "Popular Movies",
+              cardSize: CardSize.large,
+              movies: popularMovies,
+            ),
+            MovieSection(
+              sectionTitle: "Now in Cinemas",
+              cardSize: CardSize.medium,
+              movies: popularMovies,
+            ),
+          ],
+        ),
       ),
     );
   }
