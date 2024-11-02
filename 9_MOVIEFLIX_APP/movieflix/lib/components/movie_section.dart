@@ -65,6 +65,7 @@ class MovieSection extends StatelessWidget {
 
         if (cardSize == CardSize.large) {
           return LargeMovieCard(
+            id: movie.id,
             posterPath: movie.backDropPath,
           );
         }

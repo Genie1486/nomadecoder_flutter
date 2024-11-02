@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:movieflix/screens/detail_screen.dart';
 
 class LargeMovieCard extends StatelessWidget {
+  final int id;
   final String posterPath;
 
   const LargeMovieCard({
     super.key,
     required this.posterPath,
+    required this.id,
   });
 
   @override
@@ -16,7 +18,7 @@ class LargeMovieCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DetailScreen(),
+            builder: (context) => DetailScreen(id: id),
           ),
         );
       },
