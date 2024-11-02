@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webtoon/models/webtoon_detail_model.dart';
 import 'package:webtoon/models/webtoon_episode_model.dart';
 import 'package:webtoon/services/api_service.dart';
@@ -26,6 +27,23 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   late Future<WebtoonDetailModel> webtoon;
   late Future<List<WebtoonEpisodeModel>> episodes;
+  late SharedPreferences prefs;
+  bool isLiked = false;
+
+  // prefs 초기화 하는 부분
+  Future initPrefs() async {
+    prefs = await SharedPreferences.getInstance();
+    final likedToons = prefs.getStringList('likedToons');
+    if (likedToons != null) {
+      if (likedToons.contains(widget.id) == true) {
+        setState(() {
+          isLiked = true;
+        });
+      }
+    } else {
+      await prefs.setStringList('likedToons', []);
+    }
+  }
 
   // initState는 build 보다 먼저 호출된다.
   @override
@@ -36,6 +54,27 @@ class _DetailScreenState extends State<DetailScreen> {
     // 별개의 클래스에 있기 때문이다.
     webtoon = ApiService.getToonById(widget.id);
     episodes = ApiService.getLatestEpisodesById(widget.id);
+    initPrefs();
+  }
+
+  // 사용자가 버튼을 누를 때마다
+  // likedToons에 id를 담거나 빼려고 한다.
+  // likedToons : [1, 2, 3, 4, 5]
+  // 화면이 로딩될 때, 해당 Widget의 id가 likedToons에 있는지 확인한 후
+  // 만약에 있다면 버튼에 반영할 것
+  onHeartedTap() async {
+    final likedToons = prefs.getStringList('likedToons');
+    if (likedToons != null) {
+      if (isLiked) {
+        likedToons.remove(widget.id);
+      } else {
+        likedToons.add(widget.id);
+      }
+      await prefs.setStringList('likedToons', likedToons);
+      setState(() {
+        isLiked = !isLiked;
+      });
+    }
   }
 
   @override
@@ -48,8 +87,9 @@ class _DetailScreenState extends State<DetailScreen> {
         foregroundColor: Colors.green, // AppBar의 글자색 설정
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.favorite_outline_outlined),
+            onPressed: onHeartedTap,
+            icon: Icon(
+                isLiked ? Icons.favorite : Icons.favorite_outline_outlined),
           ),
         ],
         title: Text(
