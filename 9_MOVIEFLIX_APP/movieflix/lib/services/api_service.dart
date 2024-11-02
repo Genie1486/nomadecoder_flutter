@@ -5,14 +5,13 @@ import 'package:movieflix/models/movie_model.dart';
 
 class ApiService {
   static const String baseUrl = "https://movies-api.nomadcoders.workers.dev";
-  static const String popular = "popular";
 
   // getPopularMovies()는
   // 서버로 부터 Popular Movies에 대한 정보를 가져와서
   // 리스트로 반환하는 함수
-  static Future<List<MovieModel>> getPopularMovies() async {
+  static Future<List<MovieModel>> getTargetedMovies(String target) async {
     List<MovieModel> movieInstances = [];
-    final url = Uri.parse('$baseUrl/$popular');
+    final url = Uri.parse('$baseUrl/$target');
 
     final response = await http.get(url);
     if (response.statusCode == 200) {

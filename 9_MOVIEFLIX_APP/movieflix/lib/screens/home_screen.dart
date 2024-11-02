@@ -7,7 +7,14 @@ import 'package:movieflix/services/api_service.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  final Future<List<MovieModel>> popularMovies = ApiService.getPopularMovies();
+  final Future<List<MovieModel>> popularMovies =
+      ApiService.getTargetedMovies("popular");
+
+  final Future<List<MovieModel>> nowPlayingMovies =
+      ApiService.getTargetedMovies("now-playing");
+
+  final Future<List<MovieModel>> comingSoonMovies =
+      ApiService.getTargetedMovies("coming-soon");
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +35,12 @@ class HomeScreen extends StatelessWidget {
             MovieSection(
               sectionTitle: "Now in Cinemas",
               cardSize: CardSize.medium,
-              movies: popularMovies,
+              movies: nowPlayingMovies,
+            ),
+            MovieSection(
+              sectionTitle: "Coming Soon",
+              cardSize: CardSize.medium,
+              movies: comingSoonMovies,
             ),
           ],
         ),
