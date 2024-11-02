@@ -36,10 +36,12 @@ class MediumMovieCard extends StatelessWidget {
           child: Text(
             title,
             style: const TextStyle(
-              fontSize: 100,
+              fontSize: 13,
               fontWeight: FontWeight.w600,
             ),
             softWrap: true,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ],
