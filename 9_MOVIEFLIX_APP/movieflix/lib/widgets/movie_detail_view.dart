@@ -18,6 +18,12 @@ class MovieDetailView extends StatelessWidget {
     required this.genres,
   });
 
+  String formatRuntime(int runtime) {
+    int hour = runtime ~/ 60;
+    int min = runtime % 60;
+    return "${hour == 0 ? "" : hour}h ${min}min";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -64,7 +70,7 @@ class MovieDetailView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "$runtime",
+                      formatRuntime(runtime),
                       style: TextStyle(
                         fontSize: 13,
                         color: Colors.white.withOpacity(0.8),

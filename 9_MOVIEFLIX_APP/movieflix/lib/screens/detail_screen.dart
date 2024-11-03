@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:movieflix/models/movie_detail_model.dart';
 import 'package:movieflix/services/api_service.dart';
 import 'package:movieflix/widgets/movie_detail_view.dart';
-import 'package:movieflix/widgets/star_rating_widget.dart';
 
 class DetailScreen extends StatefulWidget {
   final int id;
