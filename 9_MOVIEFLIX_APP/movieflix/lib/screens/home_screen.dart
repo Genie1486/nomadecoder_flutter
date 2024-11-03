@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movieflix/components/movie_section.dart';
-import 'package:movieflix/enums/card_size.dart';
+import 'package:movieflix/enums/card_category.dart';
 import 'package:movieflix/models/movie_model.dart';
 import 'package:movieflix/services/api_service.dart';
 
@@ -27,18 +27,15 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             MovieSection(
-              sectionTitle: "Popular Movies",
-              cardSize: CardSize.large,
+              cardCategory: CardCategory.popularMovies,
               movies: popularMovies,
             ),
             MovieSection(
-              sectionTitle: "Now in Cinemas",
-              cardSize: CardSize.medium,
+              cardCategory: CardCategory.nowInCinemas,
               movies: nowPlayingMovies,
             ),
             MovieSection(
-              sectionTitle: "Coming Soon",
-              cardSize: CardSize.medium,
+              cardCategory: CardCategory.comingSoon,
               movies: comingSoonMovies,
             ),
           ],

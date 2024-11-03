@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:movieflix/enums/card_size.dart';
+import 'package:movieflix/enums/card_category.dart';
 import 'package:movieflix/models/movie_model.dart';
 import 'package:movieflix/widgets/large_movie_card.dart';
-import 'package:movieflix/widgets/medium_movie_card.dart';
+import 'package:movieflix/widgets/movie_card.dart';
 
 class MovieSection extends StatelessWidget {
-  final String sectionTitle;
-  final CardSize cardSize;
+  final CardCategory cardCategory;
   final Future<List<MovieModel>> movies;
 
   const MovieSection({
     super.key,
-    required this.sectionTitle,
-    required this.cardSize,
+    required this.cardCategory,
     required this.movies,
   });
 
@@ -26,7 +24,7 @@ class MovieSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            sectionTitle,
+            cardCategory.value,
             style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w600,
@@ -63,24 +61,12 @@ class MovieSection extends StatelessWidget {
         print(index);
         var movie = snapshot.data![index];
 
-        if (cardSize == CardSize.large) {
-          return LargeMovieCard(
-            id: movie.id,
-            posterPath: movie.posterPath,
-            type: "",
-          );
-        }
-
-        if (cardSize == CardSize.medium) {
-          return MediumMovieCard(
-            id: movie.id,
-            title: movie.title,
-            posterPath: movie.posterPath,
-            type: sectionTitle,
-          );
-        }
-
-        return null;
+        return MovieCard(
+          id: movie.id,
+          title: movie.title,
+          posterPath: movie.posterPath,
+          cardCategory: cardCategory,
+        );
       },
       separatorBuilder: (context, index) => const SizedBox(
         width: 15,
