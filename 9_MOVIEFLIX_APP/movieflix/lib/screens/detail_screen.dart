@@ -6,11 +6,13 @@ import 'package:movieflix/widgets/movie_detail_view.dart';
 class DetailScreen extends StatefulWidget {
   final int id;
   final String posterPath;
+  final String type;
 
   const DetailScreen({
     super.key,
     required this.id,
     required this.posterPath,
+    required this.type,
   });
 
   @override
@@ -54,7 +56,7 @@ class _DetailScreenState extends State<DetailScreen> {
       body: Stack(
         children: [
           Hero(
-            tag: widget.id,
+            tag: "${widget.id}${widget.type}",
             child: Image.network(
               widget.posterPath, // 여기에 이미지 URL 입력
               fit: BoxFit.cover, // 이미지가 Container에 맞게 조정

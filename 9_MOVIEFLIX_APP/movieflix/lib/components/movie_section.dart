@@ -67,13 +67,16 @@ class MovieSection extends StatelessWidget {
           return LargeMovieCard(
             id: movie.id,
             posterPath: movie.posterPath,
+            type: "",
           );
         }
 
         if (cardSize == CardSize.medium) {
           return MediumMovieCard(
+            id: movie.id,
             title: movie.title,
             posterPath: movie.posterPath,
+            type: sectionTitle,
           );
         }
 

@@ -4,11 +4,13 @@ import 'package:movieflix/screens/detail_screen.dart';
 class LargeMovieCard extends StatelessWidget {
   final int id;
   final String posterPath;
+  final String type;
 
   const LargeMovieCard({
     super.key,
     required this.posterPath,
     required this.id,
+    required this.type,
   });
 
   @override
@@ -22,6 +24,7 @@ class LargeMovieCard extends StatelessWidget {
             builder: (context) => DetailScreen(
               id: id,
               posterPath: posterPath,
+              type: "",
             ),
           ),
         );
