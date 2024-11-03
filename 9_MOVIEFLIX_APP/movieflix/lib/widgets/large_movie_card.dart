@@ -18,21 +18,28 @@ class LargeMovieCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DetailScreen(id: id),
+            fullscreenDialog: true,
+            builder: (context) => DetailScreen(
+              id: id,
+              posterPath: posterPath,
+            ),
           ),
         );
       },
-      child: Container(
-        clipBehavior: Clip.hardEdge,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: SizedBox(
-          width: 330,
-          height: 230,
-          child: Image.network(
-            posterPath,
-            fit: BoxFit.cover,
+      child: Hero(
+        tag: id,
+        child: Container(
+          clipBehavior: Clip.hardEdge,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: SizedBox(
+            width: 330,
+            height: 230,
+            child: Image.network(
+              posterPath,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ),

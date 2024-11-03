@@ -1,5 +1,5 @@
 class MovieDetailModel {
-  final String title, overview, backDropPath;
+  final String title, overview, posterPath;
   final int runtime;
   final double voteAverage;
   final List<String> genres;
@@ -8,7 +8,7 @@ class MovieDetailModel {
 
   MovieDetailModel.fromJson(Map<String, dynamic> json)
       : title = json['title'],
-        backDropPath = imageServerUrl + json['backdrop_path'],
+        posterPath = imageServerUrl + json['backdrop_path'],
         runtime = json["runtime"],
         overview = json["overview"],
         voteAverage = json["vote_average"],

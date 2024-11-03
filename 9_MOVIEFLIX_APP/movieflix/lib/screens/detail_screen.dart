@@ -5,10 +5,12 @@ import 'package:movieflix/widgets/movie_detail_view.dart';
 
 class DetailScreen extends StatefulWidget {
   final int id;
+  final String posterPath;
 
   const DetailScreen({
     super.key,
     required this.id,
+    required this.posterPath,
   });
 
   @override
@@ -49,22 +51,35 @@ class _DetailScreenState extends State<DetailScreen> {
         ),
       ),
       extendBodyBehindAppBar: true, // 앱바 뒤에 배경 설정
-      body: FutureBuilder(
-        future: movie,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return MovieDetailView(
-                id: widget.id,
-                runtime: snapshot.data!.runtime,
-                voteAverage: snapshot.data!.voteAverage,
-                title: snapshot.data!.title,
-                overview: snapshot.data!.overview,
-                backDropPath: snapshot.data!.backDropPath,
-                genres: snapshot.data!.genres);
-          }
+      body: Stack(
+        children: [
+          Hero(
+            tag: widget.id,
+            child: Image.network(
+              widget.posterPath, // 여기에 이미지 URL 입력
+              fit: BoxFit.cover, // 이미지가 Container에 맞게 조정
+              width: double.infinity,
+              height: double.infinity,
+            ),
+          ),
+          FutureBuilder(
+            future: movie,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return MovieDetailView(
+                    id: widget.id,
+                    runtime: snapshot.data!.runtime,
+                    voteAverage: snapshot.data!.voteAverage,
+                    title: snapshot.data!.title,
+                    overview: snapshot.data!.overview,
+                    posterPath: snapshot.data!.posterPath,
+                    genres: snapshot.data!.genres);
+              }
 
-          return Container();
-        },
+              return Container();
+            },
+          ),
+        ],
       ),
     );
   }

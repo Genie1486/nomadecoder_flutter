@@ -1,11 +1,11 @@
 class MovieModel {
   final int id;
-  final String title, backDropPath;
+  final String title, posterPath;
 
   static const String imageServerUrl = "https://image.tmdb.org/t/p/w500";
 
   MovieModel.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         title = json['title'],
-        backDropPath = imageServerUrl + json['backdrop_path'];
+        posterPath = imageServerUrl + json['backdrop_path'];
 }
