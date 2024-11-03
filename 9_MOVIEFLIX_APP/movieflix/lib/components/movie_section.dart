@@ -21,6 +21,7 @@ class MovieSection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(15, 0, 0, 30),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -35,7 +36,7 @@ class MovieSection extends StatelessWidget {
             height: 18,
           ),
           SizedBox(
-            height: 190,
+            height: 206,
             child: FutureBuilder(
               future: movies,
               builder: (context, snapshot) {
