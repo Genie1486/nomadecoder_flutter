@@ -2,12 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:movieflix/models/movie_detail_model.dart';
 import 'package:movieflix/services/api_service.dart';
 
-class DetailScreen extends StatelessWidget {
-  DetailScreen({
+class DetailScreen extends StatefulWidget {
+  final int id;
+
+  const DetailScreen({
     super.key,
+    required this.id,
   });
 
-  final Future<MovieDetailModel> movie = ApiService.getMovieById(420634);
+  @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+  late Future<MovieDetailModel> movie;
+
+  @override
+  void initState() {
+    super.initState();
+
+    movie = ApiService.getMovieById(widget.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +32,7 @@ class DetailScreen extends StatelessWidget {
           backgroundColor: Colors.transparent, // AppBar의 배경색
           foregroundColor: Colors.white, // AppBar의 글자색 설정
           title: const Text(
-            "hello",
+            "Back to list",
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w400,
@@ -33,14 +48,66 @@ class DetailScreen extends StatelessWidget {
             ),
           ),
         ),
-        body: FutureBuilder(
-          future: movie,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Text(snapshot.data!.overview);
-            }
-            return Container();
-          },
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 200,
+              ),
+              const Column(
+                children: [
+                  Text('Bohemian Rhapsody'),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.star),
+                      Icon(Icons.star),
+                      Icon(Icons.star),
+                      Icon(Icons.star),
+                      Icon(Icons.star),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Text("2h 14min"),
+                      Text("|"),
+                      Text("Biography, Drama, Music"),
+                    ],
+                  ),
+                ],
+              ),
+              const Row(
+                children: [
+                  Column(
+                    children: [
+                      Text("StoryLine"),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text("asdfasfasfdafdafafda"),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 200,
+              ),
+              Container(
+                width: 300,
+                height: 60,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFf8d849),
+                  borderRadius: BorderRadiusDirectional.circular(10),
+                ),
+                child: const Center(child: Text("Buy ticket")),
+              ),
+            ],
+          ),
         ));
   }
 }
